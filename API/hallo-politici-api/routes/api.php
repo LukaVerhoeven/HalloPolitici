@@ -16,3 +16,6 @@ use Illuminate\Http\Request;
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
+
+Route::get('politici/all', 'ApiController@getStartingPolitici'); //alle politici ophalen in random order
+Route::get('politici/{id}', 'ApiController@getnextPoliticus'); //politicus ophale op id
