@@ -10,6 +10,6 @@ class Politicus extends Model
 
     public function partijnaam()
     {
-        return $this->belongsTo('App\Partij', 'partij_id');
+        return $this->belongsTo('App\Partij', 'partij_id')->select('id', 'naam');
     }
 }

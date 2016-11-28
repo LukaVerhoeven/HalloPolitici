@@ -8,8 +8,8 @@ class Partij extends Model
 {
     protected $table = 'partijen';
 
-    public function Politici()
+    public function politici()
     {
-        return $this->hasMany('App\Politicus');
+        return $this->hasMany('App\Politicus', 'partij_id');
     }
 }
