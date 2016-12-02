@@ -181,6 +181,132 @@ process.chdir = function (dir) {
 process.umask = function() { return 0; };
 
 },{}],2:[function(require,module,exports){
+var Vue // late bind
+var map = window.__VUE_HOT_MAP__ = Object.create(null)
+var installed = false
+var isBrowserify = false
+var initHookName = 'beforeCreate'
+
+exports.install = function (vue, browserify) {
+  if (installed) return
+  installed = true
+
+  Vue = vue
+  isBrowserify = browserify
+
+  // compat with < 2.0.0-alpha.7
+  if (Vue.config._lifecycleHooks.indexOf('init') > -1) {
+    initHookName = 'init'
+  }
+
+  exports.compatible = Number(Vue.version.split('.')[0]) >= 2
+  if (!exports.compatible) {
+    console.warn(
+      '[HMR] You are using a version of vue-hot-reload-api that is ' +
+      'only compatible with Vue.js core ^2.0.0.'
+    )
+    return
+  }
+}
+
+/**
+ * Create a record for a hot module, which keeps track of its constructor
+ * and instances
+ *
+ * @param {String} id
+ * @param {Object} options
+ */
+
+exports.createRecord = function (id, options) {
+  var Ctor = null
+  if (typeof options === 'function') {
+    Ctor = options
+    options = Ctor.options
+  }
+  makeOptionsHot(id, options)
+  map[id] = {
+    Ctor: Vue.extend(options),
+    instances: []
+  }
+}
+
+/**
+ * Make a Component options object hot.
+ *
+ * @param {String} id
+ * @param {Object} options
+ */
+
+function makeOptionsHot (id, options) {
+  injectHook(options, initHookName, function () {
+    map[id].instances.push(this)
+  })
+  injectHook(options, 'beforeDestroy', function () {
+    var instances = map[id].instances
+    instances.splice(instances.indexOf(this), 1)
+  })
+}
+
+/**
+ * Inject a hook to a hot reloadable component so that
+ * we can keep track of it.
+ *
+ * @param {Object} options
+ * @param {String} name
+ * @param {Function} hook
+ */
+
+function injectHook (options, name, hook) {
+  var existing = options[name]
+  options[name] = existing
+    ? Array.isArray(existing)
+      ? existing.concat(hook)
+      : [existing, hook]
+    : [hook]
+}
+
+function tryWrap (fn) {
+  return function (id, arg) {
+    try { fn(id, arg) } catch (e) {
+      console.error(e)
+      console.warn('Something went wrong during Vue component hot-reload. Full reload required.')
+    }
+  }
+}
+
+exports.rerender = tryWrap(function (id, fns) {
+  var record = map[id]
+  record.Ctor.options.render = fns.render
+  record.Ctor.options.staticRenderFns = fns.staticRenderFns
+  record.instances.slice().forEach(function (instance) {
+    instance.$options.render = fns.render
+    instance.$options.staticRenderFns = fns.staticRenderFns
+    instance._staticTrees = [] // reset static trees
+    instance.$forceUpdate()
+  })
+})
+
+exports.reload = tryWrap(function (id, options) {
+  makeOptionsHot(id, options)
+  var record = map[id]
+  record.Ctor.extendOptions = options
+  var newCtor = Vue.extend(options)
+  record.Ctor.options = newCtor.options
+  record.Ctor.cid = newCtor.cid
+  if (newCtor.release) {
+    // temporary global mixin strategy used in < 2.0.0-alpha.6
+    newCtor.release()
+  }
+  record.instances.slice().forEach(function (instance) {
+    if (instance.$parent) {
+      instance.$parent.$forceUpdate()
+    } else {
+      console.warn('Root or manually mounted instance modified. Full reload required.')
+    }
+  })
+})
+
+},{}],3:[function(require,module,exports){
 /*!
  * vue-resource v1.0.3
  * https://github.com/vuejs/vue-resource
@@ -1699,7 +1825,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 module.exports = plugin;
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 (function (process,global){
 /*!
  * Vue.js v2.1.3
@@ -9817,7 +9943,7 @@ Vue$3.compile = compileToFunctions;
 module.exports = Vue$3;
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"_process":1}],4:[function(require,module,exports){
+},{"_process":1}],5:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -9838,9 +9964,9 @@ exports.default = {
 
             this.randomWord = '...';
             this.$http.get('http://api.wordnik.com:80/v4/words.json/randomWord?api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5').then(function (success_response) {
-                _this.randomWord = response.data.word;
+                _this.randomWord = success_response.data.word;
             }, function (error_response) {
-                alert(error.data);
+                alert(error_response.data);
             });
         }
     }
@@ -9848,10 +9974,20 @@ exports.default = {
 })()
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
+if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
 __vue__options__.render = function render () {var _vm=this;return _vm._h('div',[_vm._h('h1',["Random Word"])," ",_vm._h('button',{attrs:{"id":"btn-get-random-word"},on:{"click":_vm.getRandomWord}},["Get Random Word"])," ",_vm._h('p',[_vm._s(_vm.randomWord)])])}
 __vue__options__.staticRenderFns = []
-
-},{}],5:[function(require,module,exports){
+if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1", __vue__options__)
+  } else {
+    hotAPI.reload("data-v-1", __vue__options__)
+  }
+})()}
+},{"vue":4,"vue-hot-reload-api":2}],6:[function(require,module,exports){
 var Vue = require('vue');
 var VueResource = require('vue-resource');
 
@@ -9859,8 +9995,10 @@ Vue.use(VueResource);
 
 Vue.component('RandomWord', require('./components/RandomWord.vue'));
 
+Vue.config.ignoredElements = '<fb:login-button ></fb:login-button >';
+
 const vm = new Vue({
     el: '#app'
 });
 
-},{"./components/RandomWord.vue":4,"vue":3,"vue-resource":2}]},{},[5]);
+},{"./components/RandomWord.vue":5,"vue":4,"vue-resource":3}]},{},[6]);

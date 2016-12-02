@@ -81,5 +81,9 @@
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
-    <hook type="before_compile" src="scripts/vueify-build.js" />
+    <hook src="scripts/vueify-build.js" type="before_compile" />
+    <plugin name="cordova-plugin-facebook4" spec="~1.7.4">
+        <variable name="APP_ID" value="776739179131851" />
+        <variable name="APP_NAME" value="Hallo Politici" />
+    </plugin>
 </widget>

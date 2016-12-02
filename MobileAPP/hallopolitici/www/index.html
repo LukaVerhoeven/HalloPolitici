@@ -30,9 +30,15 @@
     </head>
     <body>
         <div id="app">
-            <random-word></random-word>
+            <random-word></random-word>            
+            <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+            </fb:login-button>
+
+            <div id="status">
+            </div>
         </div>
 
+        <div id="fb-root"></div>
         <script src="js/bundle.js"></script>
 
         <script type="text/javascript" src="cordova.js"></script>

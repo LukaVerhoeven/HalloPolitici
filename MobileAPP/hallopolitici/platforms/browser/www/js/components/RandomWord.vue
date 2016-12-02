@@ -22,9 +22,9 @@ export default {
             this.$http.get(
                 'http://api.wordnik.com:80/v4/words.json/randomWord?api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5'
             ).then((success_response) => {
-                this.randomWord = response.data.word;
+                this.randomWord = success_response.data.word;
             }, (error_response) => {
-                alert(error.data);
+                alert(error_response.data);
             });
         }
     }
