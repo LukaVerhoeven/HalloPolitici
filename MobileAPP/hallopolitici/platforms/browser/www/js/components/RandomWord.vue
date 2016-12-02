@@ -21,9 +21,9 @@ export default {
             this.randomWord = '...';
             this.$http.get(
                 'http://api.wordnik.com:80/v4/words.json/randomWord?api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5'
-            ).then(function (response) {
+            ).then((success_response) => {
                 this.randomWord = response.data.word;
-            }, function (error) {
+            }, (error_response) => {
                 alert(error.data);
             });
         }

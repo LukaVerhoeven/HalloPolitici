@@ -9834,10 +9834,12 @@ exports.default = {
 
     methods: {
         getRandomWord: function getRandomWord() {
+            var _this = this;
+
             this.randomWord = '...';
-            this.$http.get('http://api.wordnik.com:80/v4/words.json/randomWord?api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5').then(function (response) {
-                this.randomWord = response.data.word;
-            }, function (error) {
+            this.$http.get('http://api.wordnik.com:80/v4/words.json/randomWord?api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5').then(function (success_response) {
+                _this.randomWord = response.data.word;
+            }, function (error_response) {
                 alert(error.data);
             });
         }
@@ -9859,6 +9861,6 @@ Vue.component('RandomWord', require('./components/RandomWord.vue'));
 
 const vm = new Vue({
     el: '#app'
-}).$mount('#app');
+});
 
 },{"./components/RandomWord.vue":4,"vue":3,"vue-resource":2}]},{},[5]);
