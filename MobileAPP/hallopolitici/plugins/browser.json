@@ -9,6 +9,11 @@
     "installed_plugins": {
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.phonegap.helloworld"
+        },
+        "cordova-plugin-facebook4": {
+            "APP_ID": "776739179131851",
+            "APP_NAME": "Hallo Politici",
+            "PACKAGE_NAME": "com.phonegap.helloworld"
         }
     },
     "dependent_plugins": {}

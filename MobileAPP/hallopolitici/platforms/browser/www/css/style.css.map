@@ -1,7 +1,15 @@
 {
 "version": 3,
+<<<<<<< HEAD
 "mappings": "AAAA,UAMC;EALD,WAAW,EAAE,YAAY;EACzB,GAAG,EAAE,oLAG8C;AAEnD,UAMC;EALD,WAAW,EAAE,aAAa;EAC1B,GAAG,EAAE,oLAG8C",
 "sources": ["../sass/style.scss"],
 "names": [],
 "file": "style.css"
 }
+=======
+"mappings": "",
+"sources": [],
+"names": [],
+"file": "style.css"
+}
+>>>>>>> 165c4d44d72c0b019c323d757a714d6134b267b9

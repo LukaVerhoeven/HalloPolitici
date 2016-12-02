@@ -10068,9 +10068,9 @@ exports.default = {
 
             this.randomWord = '...';
             this.$http.get('http://api.wordnik.com:80/v4/words.json/randomWord?api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5').then(function (success_response) {
-                _this.randomWord = response.data.word;
+                _this.randomWord = success_response.data.word;
             }, function (error_response) {
-                alert(error.data);
+                alert(error_response.data);
             });
         }
     }
@@ -10079,7 +10079,11 @@ exports.default = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
+<<<<<<< HEAD
 __vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;return _h('div',[_h('h1',["Random Word"])," ",_h('button',{attrs:{"id":"btn-get-random-word"},on:{"click":_vm.getRandomWord}},["Get Random Word"])," ",_h('p',[_vm._s(_vm.randomWord)])])}
+=======
+__vue__options__.render = function render () {var _vm=this;return _vm._h('div',[_vm._h('h1',["Random Word"])," ",_vm._h('button',{attrs:{"id":"btn-get-random-word"},on:{"click":_vm.getRandomWord}},["Get Random Word"])," ",_vm._h('p',[_vm._s(_vm.randomWord)])])}
+>>>>>>> 165c4d44d72c0b019c323d757a714d6134b267b9
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -10098,6 +10102,8 @@ var VueResource = require('vue-resource');
 Vue.use(VueResource);
 
 Vue.component('RandomWord', require('./components/RandomWord.vue'));
+
+Vue.config.ignoredElements = '<fb:login-button ></fb:login-button >';
 
 const vm = new Vue({
     el: '#app'

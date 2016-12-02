@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.phonegap.helloworld" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>Hello World</name>
+    <name>Hallo Politici</name>
     <description>
-        Hello World sample application that responds to the deviceready event.
+        Applicatie voor de website van Hallo Politici.
     </description>
-    <author email="support@phonegap.com" href="http://phonegap.com">
-        PhoneGap Team
+    <author href="http://hallopolitici.be">
+        Dries Heyninck, Luka Verhoeven
     </author>
     <content src="index.html" />
     <preference name="permissions" value="none" />
@@ -81,5 +81,9 @@
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
-    <hook type="before_compile" src="scripts/vueify-build.js" />
+    <hook src="scripts/vueify-build.js" type="before_compile" />
+    <plugin name="cordova-plugin-facebook4" spec="~1.7.4">
+        <variable name="APP_ID" value="776739179131851" />
+        <variable name="APP_NAME" value="Hallo Politici" />
+    </plugin>
 </widget>
