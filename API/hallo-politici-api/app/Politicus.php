@@ -12,4 +12,9 @@ class Politicus extends Model
     {
         return $this->belongsTo('App\Partij', 'partij_id')->select('id', 'naam');
     }
+
+    public function vragen()
+    {
+        return $this->hasMany('App\Vraag_antwoord', 'politicus_id');
+    }
 }
