@@ -17,4 +17,5 @@ class Politicus extends Model
     {
         return $this->hasMany('App\Vraag_antwoord', 'politicus_id');
     }
+
 }
