@@ -29,6 +29,7 @@
         <link href="https://fonts.googleapis.com/css?family=Archivo+Narrow" rel="stylesheet">
         <!-- <link rel="stylesheet" type="text/css" href="css/index.css" /> -->
         <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <link rel="stylesheet" type="text/css" href="css/jTinder.css" />
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
         <title>Hallo Politici</title>
     </head>
@@ -52,7 +53,54 @@
 
       		<section class="tabset--content" data-active-tab="tab-1">
       			<div class="tabset--section">
-      				TABSET ONE
+                    <div class="wrap">
+                        <!-- start jtinder container -->
+                        <div id="tinderslide">
+                            <ul>
+                                <li class="pane1">
+                                    <div class="img"></div>
+                                    <div>Miami Beach</div>
+                                    <div class="like"></div>
+                                    <div class="dislike"></div>
+                                </li>
+                                <li class="pane2">
+                                    <div class="img"></div>
+                                    <div>San Francisco</div>
+                                    <div class="like"></div>
+                                    <div class="dislike"></div>
+                                </li>
+                                <li class="pane3">
+                                    <div class="img"></div>
+                                    <div>Chicago</div>
+                                    <div class="like"></div>
+                                    <div class="dislike"></div>
+                                </li>
+                                <li class="pane4">
+                                    <div class="img"></div>
+                                    <div>New York</div>
+                                    <div class="like"></div>
+                                    <div class="dislike"></div>
+                                </li>
+                                <li class="pane5">
+                                    <div class="img"></div>
+                                    <div>Beach</div>
+                                    <div class="like"></div>
+                                    <div class="dislike"></div>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- end jtinder container -->
+                    </div>
+                    <!-- end padding container -->
+
+                    <!-- jTinder trigger by buttons  -->
+                    <div class="actions">
+                        <a href="#" class="dislike"><i></i></a>
+                        <a href="#" class="like"><i></i></a>
+                    </div>
+
+                    <!-- jTinder status text  -->
+                    <div id="status"></div>
       			</div>
       			<div class="tabset--section">
       				TABSET TWO
@@ -73,11 +121,14 @@
         </div>
 
         <div id="fb-root"></div>
-        
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script type="text/javascript" src="js/jquery.transform2d.js"></script>
+        <script type="text/javascript" src="js/jquery.jTinder.js"></script>
         <!-- <script src="js/bundle.js"></script> -->
         <!-- <script type="text/javascript" src="js/cordova.js"></script> -->
         <script type="text/javascript" src="js/sliding-tab.js"></script>
+        <script type="text/javascript" src="js/main-jTinder.js"></script>
         <!-- <script type="text/javascript" src="js/index.js"></script> -->
     </body>
 </html>
