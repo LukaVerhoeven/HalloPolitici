@@ -1,11 +1,12 @@
 
-@import "sliding-tab.scss";
+
 
 $login-bg-button-color: #356371;
 $register-color: #356371;
+$step-color: #356371;
 
 %comfortaa{
- font-family: 'Comfortaa', cursive;
+ font-family: 'Open Sans', sans-serif;
 }
 %archivo{
   font-family: 'Archivo Narrow', sans-serif;
@@ -34,13 +35,17 @@ $register-color: #356371;
 %white{
   color: white;
 }
+%cover{
+  background-size: cover;
+}
 
+@import "sliding-tab.scss";
 .login{
   @extend %fullwidth;
   @extend %fullheight;
   @extend %inlineblock;
+  @extend %cover;
   background-image: url(../img/bg.jpg);
-  background-size: cover;
   .head{
     height: 44%;
     .textbalon{
@@ -85,4 +90,26 @@ $register-color: #356371;
 
     }
   }
+}
+
+.tabset--section{
+  .swiper{
+    @extend %fullheight;
+    .actions{
+      position: absolute;
+      margin-top: -12%;
+      margin-left: 2%;
+      z-index: 5;
+    }
+  }
+}
+.tabset--nav{
+  .step{
+    @extend %archivo;
+    position: absolute;
+    color: $step-color;
+    margin-top: -7%;
+    font-size: 8vw;
+  }
+  // background-image: url(../img/navbar.png)
 }
