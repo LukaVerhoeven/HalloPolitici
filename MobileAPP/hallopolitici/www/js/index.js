@@ -17,9 +17,12 @@
  * under the License.
  */
 
+
+// Global variables
 var _USERID;
 var _LOGINBTN;
 
+// Application module
 var app = {
     // Application Constructor
     initialize: function() {
@@ -27,16 +30,19 @@ var app = {
         this.bindEvents();
     },
     getButtons: function () {
+        // Get login button
         _LOGINBTN = document.querySelector("#loginBtn");
     },
     bindEvents: function() {
+        // Bind device ready event to app
         document.addEventListener('deviceready', this.onDeviceReady, false);
+        // Bind click event to login button
         _LOGINBTN.addEventListener('click', function () {
             app.faceBookLogin();
         });
     },
     fbLoginSuccess: function (userData) {
-        // debug the userID if it exists
+        // Debug the userID if it exists
         if(userData.authResponse.userID) {
             console.log(userData.authResponse.userID);
         }
@@ -44,14 +50,15 @@ var app = {
             console.log('no user id');
         }
 
-        // get user id from api call to facebook
+        // Get user id from the JSON response
         _USERID = userData.authResponse.userID;
 
-        // set user id in local storage
+        // Set user id in local storage
         var userID = window.localStorage.key(0);
         window.localStorage.setItem(0, _USERID);
     },
     faceBookLogin: function() {
+        // Facebook API call for login
         facebookConnectPlugin.login(["public_profile", "email"],
             app.fbLoginSuccess,
             function (error_response) {
@@ -60,8 +67,11 @@ var app = {
         );
     },
     onDeviceReady: function() {
+        // Debug device ready event in console
         console.log('device is ready');
     }
 };
 
+
+// Start app 
 app.initialize();
