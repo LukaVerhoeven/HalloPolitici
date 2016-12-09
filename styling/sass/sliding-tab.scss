@@ -1,0 +1,116 @@
+$third : 33.334%;
+
+body {
+	width: 100%;
+	height: 100vh;
+
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+}
+
+.box {
+  @extend %fullheight;
+  @extend %fullwidth;
+	overflow: hidden;
+
+	display: flex;
+	flex-flow: column wrap;
+
+	box-shadow: 0px 0px 14px 4px rgba(#000,0.1);
+}
+
+.tabset--nav {
+	position: relative;
+	display: flex;
+
+	justify-content: space-around;
+	align-items: center;
+
+	flex-flow: row nowrap;
+
+	width: 100%;
+}
+
+.nav--item {
+	padding: 1.5em 0 1.4em 0;
+
+	flex-basis: $third;
+
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-size: 0.8em;
+
+	cursor: pointer;
+}
+
+// the active tab marker
+.active--tab__marker {
+	height: 0.2em;
+	width: $third;
+	background-color: #333;
+	position: absolute;
+	bottom: 0;
+
+	transition: 0.24s;
+}
+
+.nav--item:nth-of-type(1).-is--active ~ .active--tab__marker{
+	left: 0;
+}
+.nav--item:nth-of-type(2).-is--active ~ .active--tab__marker{
+	left: $third;
+}
+.nav--item:nth-of-type(3).-is--active ~ .active--tab__marker{
+	left: $third * 2;
+}
+
+// the tabset and content
+.tabset--content {
+	position: relative;
+	width: 300%;
+
+	flex-grow: 1;
+
+	display: flex;
+	align-items: stretch;
+	justify-content: space-between;
+
+	transition: 0.3s;
+
+}
+
+
+[data-active-tab="tab-1"] {
+	left: 0;
+}
+[data-active-tab="tab-2"] {
+	left: -100%;
+}
+[data-active-tab="tab-3"] {
+	left: -200%;
+}
+
+.tabset--section {
+	width: 100%;
+	padding-top: 10em;
+	text-align: center;
+	color: white;
+	font-weight: 900;
+	letter-spacing: 0.5em;
+
+	&:nth-of-type(1) {
+		background-color: springgreen;
+	}
+	&:nth-of-type(2) {
+		background-color: cornflowerblue;
+	}
+	&:nth-of-type(3) {
+		background-color: tomato;
+	}
+}
