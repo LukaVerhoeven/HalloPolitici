@@ -1,3 +1,3 @@
-node_modules
-www/js/bundle.js
-platforms
+/hooks/
+/platforms/
+/plugins/
