@@ -96,10 +96,24 @@ $step-color: #356371;
   .swiper{
     @extend %fullheight;
     .actions{
+      width: 20%;
       position: absolute;
-      margin-top: -12%;
-      margin-left: 2%;
+      top:76%;
+      margin-left: 2.5%;
       z-index: 5;
+        a{
+          width: 20vw;
+          margin: 0px 0vw 0px 13vw;
+          height: 20vw;
+        }
+        .dislike{
+          @extend %cover;
+          background-image: url(../img/dislike.png);
+        }
+        .like{
+          @extend %cover;
+          background-image: url(../img/like.png);
+        }
     }
   }
 }
