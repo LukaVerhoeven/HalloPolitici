@@ -14,11 +14,11 @@ class Step3Controller extends Controller
             $vragen_met_alle_politici = [];
 
             foreach ($vragen as $vraag) {
-                $politici_met_vraag = Vraag_antwoord::where('vraag_id', $vraag->vraag_id)->with('politicus')->select('vraag_id', 'politicus_id')->get();
+                $politici_met_vraag = Vraag_antwoord::where('vraag_id', $vraag->vraag_id)->with('politicus')->select('vraag_id', 'politicus_id', 'kort_antwoord')->with('vraag')->get();
                 array_push($vragen_met_alle_politici, [$vraag->vraag_id => $politici_met_vraag]);
             }
 
-            //dd($vragen_met_alle_politici);
+            dd($vragen_met_alle_politici);
 
             if(empty($vragen)){
                 return "Politicus heeft geen vragen";
