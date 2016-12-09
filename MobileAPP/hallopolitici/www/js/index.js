@@ -73,5 +73,5 @@ var app = {
 };
 
 
-// Start app 
+// Start app
 app.initialize();
