@@ -16,36 +16,51 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
+var _USERID;
+var _LOGINBTN;
+
 var app = {
     // Application Constructor
     initialize: function() {
+        this.getButtons();
         this.bindEvents();
+    },
+    getButtons: function () {
+        _LOGINBTN = document.querySelector("#loginBtn");
     },
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
-    },
-    fbLoginSuccess: function (userData) {
-        console.log(userData.authResponse.userID);
-        $.ajax({
-            type: "POST",
-            url: "https://jorenvh.webhosting.be/api/login",
-            dataType: "json",
-            data: userData.authResponse.userID,
-            success: function (success_response) {
-
-            },
-            error: function (error_response) {
-
-            }
+        _LOGINBTN.addEventListener('click', function () {
+            app.faceBookLogin();
         });
     },
-    onDeviceReady: function() {
-        facebookConnectPlugin.login(["public_profile"],
+    fbLoginSuccess: function (userData) {
+        // debug the userID if it exists
+        if(userData.authResponse.userID) {
+            console.log(userData.authResponse.userID);
+        }
+        else{
+            console.log('no user id');
+        }
+
+        // get user id from api call to facebook
+        _USERID = userData.authResponse.userID;
+
+        // set user id in local storage
+        var userID = window.localStorage.key(0);
+        window.localStorage.setItem(0, _USERID);
+    },
+    faceBookLogin: function() {
+        facebookConnectPlugin.login(["public_profile", "email"],
             app.fbLoginSuccess,
-            function (error) {
-                alert("" + error)
+            function (error_response) {
+                alert("" + error_response)
             }
         );
+    },
+    onDeviceReady: function() {
+        console.log('device is ready');
     }
 };
 
