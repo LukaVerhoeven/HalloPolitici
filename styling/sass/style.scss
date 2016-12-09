@@ -1,8 +1,88 @@
+
 @import "sliding-tab.scss";
 
+$login-bg-button-color: #356371;
+$register-color: #356371;
+
+%comfortaa{
+ font-family: 'Comfortaa', cursive;
+}
+%archivo{
+  font-family: 'Archivo Narrow', sans-serif;
+}
+%norepeat{
+  background-repeat: no-repeat;
+}
+%block{
+  display: block;
+}
+%inlineblock{
+  display: inline-block;
+}
+%marginauto{
+  margin: auto;
+}
 %fullheight{
   height: 100%;
 }
 %fullwidth{
   width: 100%;
+}
+%textright{
+  text-align: right;
+}
+%white{
+  color: white;
+}
+
+.login{
+  @extend %fullwidth;
+  @extend %fullheight;
+  @extend %inlineblock;
+  background-image: url(../img/bg.jpg);
+  background-size: cover;
+  .head{
+    height: 44%;
+    .textbalon{
+      @extend %fullwidth;
+      @extend %fullheight;
+      // height: 44%;
+    }
+  }
+  .animation{
+    height: 26%;
+  }
+  .loginbuttons{
+    @extend %fullwidth;
+    height: 30%;
+    display: inline-block;
+    input{
+      @extend %archivo;
+      @extend %norepeat;
+      @extend %block;
+      @extend %marginauto;
+      @extend %textright;
+      @extend %white;
+      width: 77%;
+      height: 33%;
+      background-size: 20% 66%;
+      margin-top: 16%;
+      padding-right: 4%;
+      font-size: 5.6vw;
+      background-color: $login-bg-button-color;
+      border-radius: 15px;
+      background-image: url(../img/fb.png);
+      background-position: center left;
+    }
+    a{
+      @extend %block;
+      @extend %marginauto;
+      @extend %archivo;
+      color: $register-color;
+      width: 22%;
+      font-size: 5vw;
+      margin-top: 3%;
+
+    }
+  }
 }
