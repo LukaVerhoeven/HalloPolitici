@@ -178,6 +178,7 @@
 }
 #tinderslide li div:first-child{
   font-family: 'Open Sans', sans-serif;
+  max-height: 15%;
   letter-spacing: 1px;
   font-size: 9vw;
   color: white;
