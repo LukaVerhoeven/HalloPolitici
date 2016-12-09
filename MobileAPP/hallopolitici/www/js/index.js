@@ -38,7 +38,8 @@ var app = {
         document.addEventListener('deviceready', this.onDeviceReady, false);
         // Bind click event to login button
         _LOGINBTN.addEventListener('click', function () {
-            app.faceBookLogin();
+            //app.faceBookLogin();
+            app.swiped(23276964567, 3, true);
         });
     },
     fbLoginSuccess: function (userData) {
@@ -69,9 +70,26 @@ var app = {
     onDeviceReady: function() {
         // Debug device ready event in console
         console.log('device is ready');
+    },
+    swiped: function (userID, politicusID, hasLiked) {
+        $.ajax({
+            type: "POST",
+            url: "http://jorenvh.webhosting.be/api/politici/vote",
+            dataType: "json",
+            data: {
+                "userID":       userID,
+                "politicusID":  politicusID,
+                "hasLiked":     hasLiked
+            },
+            success: function (success_response) {
+                console.log(success_response);
+            },
+            error: function (error_response) {
+                console.log(error_response);
+            }
+        });
     }
 };
-
 
 // Start app
 app.initialize();
