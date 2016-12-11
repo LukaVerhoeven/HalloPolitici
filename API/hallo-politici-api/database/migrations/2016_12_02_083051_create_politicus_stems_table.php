@@ -16,7 +16,7 @@ class CreatePoliticusStemsTable extends Migration
         Schema::create('politicus_stems', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('politicus_id');
-            $table->integer('gebruiker_id');
+            $table->string('gebruiker_id');
             $table->boolean('hasLiked');
             $table->timestamps();
         });

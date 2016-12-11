@@ -17,10 +17,14 @@ class Step1Controller extends Controller
         return $politici;
     }
 
-    protected function voteForPoliticus($politicusID, $userID, $hasLiked){
-        $vote = Politicus_stem::where("gebruiker_id", $userID)->where("politicus_id", $politicus_id)->first();
+    protected function voteForPoliticus(Request $request){
+        $politicusID = $request->politicusID;
+        $userID = $request->userID;
+        $hasLiked = $request->hasLiked === 'true'? true: false;
 
-        if(!empty($vote)){
+        $vote = Politicus_stem::where("gebruiker_id", $userID)->where("politicus_id", $politicusID)->first();
+
+        if(empty($vote)){
             $new_vote = Politicus_stem::create([
                 "gebruiker_id" => $userID,
                 "politicus_id" => $politicusID,
@@ -30,7 +34,7 @@ class Step1Controller extends Controller
         else {
             return "gebruiker heeft al gestemd op deze politicus";
         }
-        return;
+        return "success";
     }
 
 }
