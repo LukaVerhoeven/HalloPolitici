@@ -10,8 +10,27 @@ use App\Politicus_stem;
 class Step1Controller extends Controller
 {
     //enkel politici met vragen
-    protected function getStartingPolitici(){
-        $politici = Politicus::has('vragen')->with('partijnaam')->inRandomOrder()->select('id','voornaam', 'familienaam', 'afbeelding', 'partij_id')->get();
+    protected function getStartingPolitici(Request $request){
+        $userID = $request->userID;
+        
+        $politici = Politicus::has('vragen')
+        ->with('partijnaam')
+        //->inRandomOrder()
+        ->select('id','voornaam', 'familienaam', 'afbeelding', 'partij_id')
+        ->get();
+
+        $politiciId = $politici
+        ->groupBy('id')
+        ->keys();
+
+        $votes = Politicus_stem::where('gebruiker_id', $userID)->get()->groupBy('politicus_id')->keys();
+
+        $politici->each(function($item, $key) use ($votes, $politici){
+            if($votes->search($item->id) !== false)
+            {
+                $politici->forget($key);
+            }
+        });
         //enkel politici tonen die vragen hebben
         //foreign key altijd mee selecteren => in model ook id(primary key) altijd selecteren, anders kan relatie niet gelegd worden #Lost3HoursOfWorkBecauseOfThisSh*t
         return $politici;
@@ -35,6 +54,7 @@ class Step1Controller extends Controller
             return "gebruiker heeft al gestemd op deze politicus";
         }
         return "success";
+        //->header('Access-Control-Allow-Origin', 'http://localhost:8000');
     }
 
 }

@@ -18,4 +18,10 @@ class Politicus extends Model
         return $this->hasMany('App\Vraag_antwoord', 'politicus_id');
     }
 
+    public function stem() {
+        return $this->hasMany('App\Politicus_stem', 'politicus_id');
+    }
+
+
+
 }
