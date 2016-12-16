@@ -4,21 +4,21 @@
     padding: 5%;
 }
 
-#tinderslide {
+#tinderslide, #tinderslide2 {
     position: relative;
     background: #315e6d;
     width: 95%;
     height: 100%;
 }
 
-#tinderslide ul {
+#tinderslide ul , #tinderslide2 ul{
     margin: 0;
     position: relative;
     display: block;
     height: 100%;
 }
 
-#tinderslide li {
+#tinderslide li , #tinderslide2 li{
     display: block;
     width: 100%;
     height: 100%;
@@ -47,7 +47,7 @@
 }
 
 /* Image text */
-#tinderslide li h2 {
+#tinderslide li h2 , #tinderslide2 li h2 {
     color: #fff;
     font-size: 30px;
     text-align: center;
@@ -59,7 +59,7 @@
 }
 
 /* Image rotation */
-#tinderslide li.pane1 {
+#tinderslide li.pane1 , #tinderslide2 li.pane1{
     -webkit-transform: rotate(-1deg);
     -moz-transform: rotate(-1deg);
     -o-transform: rotate(-1deg);
@@ -67,7 +67,7 @@
     transform: rotate(-1deg);
 }
 
-#tinderslide li.pane2 {
+#tinderslide li.pane2 , #tinderslide2 li.pane2{
     -webkit-transform: rotate(2deg);
     -moz-transform: rotate(2deg);
     -o-transform: rotate(2deg);
@@ -76,8 +76,8 @@
 }
 
 /* Like & dislike badge images */
-#tinderslide .likeb,
-#tinderslide .dislikeb {
+#tinderslide .likeb, #tinderslide2 .likeb,
+#tinderslide .dislikeb, #tinderslide2 .dislikeb{
     background: url("../img/liked.png") no-repeat scroll 0 0;
     opacity: 0;
     height: 80px;
@@ -96,16 +96,18 @@
     backface-visibility: hidden;
 }
 
-#tinderslide .dislikeb {
+#tinderslide .dislikeb ,#tinderslide2 .dislikeb {
     right: 45px;
     left: auto;
     background: url("../img/nope.png") no-repeat scroll 0 0;
 }
 
 /* Image container */
-#tinderslide .img {
-    height: 60%;
-    width: 100%;
+#tinderslide .img, #tinderslide2 .img{
+    height: 50%;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 7%;
     margin-bottom: 5px;
     position: relative;
     -webkit-transform: translate3d(0%,0,0) scale3d(1,1,1);
@@ -121,34 +123,34 @@
 }
 
 /* Action - buttons */
-.actions {
+.actions, .actions1 {
     text-align: center;
     width: 304px;
     margin: 0 auto;
     overflow: hidden;
 }
 
-.actions div {
+.actions div .actions1 div{
     position: relative;
     display: inline-block;
     margin-right: -4px;
 }
 
-.actions a i {
+.actions a i, .actions1 a i {
     display: inline-block;
     width: 40px;
     height: 80px;
 }
 
-.actions a.dislike i {
+.actions a.dislike i , .actions1 a.dislike i{
     background: url("../img/dislike_button.png") no-repeat scroll center center;
 }
 
-.actions a.like i {
+.actions a.like i , .actions1 a.like i{
     background: url("../img/like_button.png") no-repeat scroll center center;
 }
 
-.actions a {
+.actions a, .actions1 a {
     float: left;
     display: block;
     background-color: #f7f7f7;
@@ -168,23 +170,31 @@
     outline: none;
 }
 
-.actions a:hover{
+.actions a:hover, .actions1 a:hover{
   text-decoration: none;
   color: #555;
   background: #f5f5f5;
 }
-#tinderslide li{
+#tinderslide li , #tinderslide2 li{
   background-color: #315e6d;
 }
-#tinderslide li div:first-child{
-  font-family: 'Open Sans', sans-serif;
+#tinderslide li div:first-child, #tinderslide2 li div:first-child , .ChooseVraag div:first-child ,.Choose div:first-child , .funny div:first-child{
+  /*font-family: 'Open Sans', sans-serif;*/
+  font-family: 'Comfortaa', cursive;
+  margin-top: 4%;
+  font-weight: 100;
   max-height: 15%;
   letter-spacing: 1px;
   font-size: 9vw;
   color: white;
 }
+.Choose div:first-child{
+  font-size: 7vw;
+  margin-bottom: 6%;
+  padding-top: 7%;
+}
 /* jTinder images */
-#tinderslide .pane5 .img {
+#tinderslide .pane5 .img{
     background: url("../img/bartje.jpg") no-repeat scroll center center;
     background-size: cover;
 }
@@ -196,7 +206,7 @@
     background: url("../img/bartje.jpg") no-repeat scroll center center;
     background-size: cover;
 }
-#tinderslide .pane2 .img {
+#tinderslide .pane2 .img{
     background: url("../img/bartje.jpg") no-repeat scroll center center;
     background-size: cover;
 }

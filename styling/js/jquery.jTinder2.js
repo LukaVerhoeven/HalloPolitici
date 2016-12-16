@@ -8,16 +8,15 @@
  * https://github.com/do-web/jTinder/blob/master/LICENSE
  */
 ;(function ($, window, document, undefined) {
-
-	var pluginName = "jTinder",
+	var pluginName = "jTinder2",
 		defaults = {
 			onDislike: null,
 			onLike: null,
 			animationRevertSpeed: 200,
 			animationSpeed: 400,
 			threshold: 1,
-			likeSelector: '.like',
-			dislikeSelector: '.dislike'
+			likeSelector: '.like1',
+			dislikeSelector: '.dislike1'
 		};
 
 	var container = null;

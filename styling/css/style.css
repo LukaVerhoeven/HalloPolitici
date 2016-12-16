@@ -1,4 +1,4 @@
-.login .loginbuttons input, .login .loginbuttons a, .tabset--nav .step {
+.login .loginbuttons input, .login .loginbuttons a, .tabset--section #tinderslide2 .vraagtext, .tabset--section .Choose .politicus p, .tabset--nav .step {
   font-family: 'Archivo Narrow', sans-serif; }
 
 .tabset--nav, .login .loginbuttons input {
@@ -13,7 +13,7 @@
 .login .loginbuttons input, .login .loginbuttons a {
   margin: auto; }
 
-.box, .login, .login .head .textbalon, .tabset--section .swiper {
+.box, .login, .login .head .textbalon, .tabset--section .swiper, .tabset--section .Choose, .tabset--section .ChooseVraag, .tabset--section .funny {
   height: 100%; }
 
 .box, .login, .login .head .textbalon, .login .loginbuttons {
@@ -22,11 +22,14 @@
 .login .loginbuttons input {
   text-align: right; }
 
-.login .loginbuttons input {
+.login .loginbuttons input, .tabset--section #tinderslide2 .vraagtext {
   color: white; }
 
-.box, .tabset--nav, .login, .tabset--section .swiper .actions .dislike, .tabset--section .swiper .actions .like {
+.box, .tabset--nav, .login, .tabset--section .swiper .actions .dislike, .tabset--section .swiper .actions1 .dislike, .tabset--section .swiper .actions .like, .tabset--section .swiper .actions1 .like {
   background-size: cover; }
+
+.tabset--section .Choose .politicus img {
+  float: left; }
 
 body {
   width: 100%;
@@ -146,20 +149,53 @@ body {
       font-size: 5vw;
       margin-top: 3%; }
 
-.tabset--section .swiper .actions {
+.tabset--section .swiper .actions, .tabset--section .swiper .actions1 {
   width: 20%;
   position: absolute;
   top: 76%;
   margin-left: 2.5%;
   z-index: 5; }
-  .tabset--section .swiper .actions a {
-    width: 20vw;
-    margin: 0px 0vw 0px 13vw;
-    height: 20vw; }
-  .tabset--section .swiper .actions .dislike {
+  .tabset--section .swiper .actions a, .tabset--section .swiper .actions1 a {
+    width: 22vw;
+    margin: 0px 0vw 0px 11vw;
+    height: 22vw; }
+  .tabset--section .swiper .actions .dislike, .tabset--section .swiper .actions1 .dislike {
     background-image: url(../img/dislike.png); }
-  .tabset--section .swiper .actions .like {
+  .tabset--section .swiper .actions .like, .tabset--section .swiper .actions1 .like {
     background-image: url(../img/like.png); }
+  .tabset--section .swiper .actions .dislike1, .tabset--section .swiper .actions1 .dislike1 {
+    background-image: url(../img/dislike1.png);
+    background-color: rgba(219, 170, 199, 0); }
+  .tabset--section .swiper .actions .like1, .tabset--section .swiper .actions1 .like1 {
+    background-image: url(../img/like1.png);
+    background-color: rgba(219, 170, 199, 0); }
+.tabset--section #tinderslide2 .vraagtext {
+  background-color: #48889c;
+  font-weight: 100;
+  letter-spacing: 0.1vw;
+  font-size: 5vw;
+  padding: 6%;
+  margin: 5%;
+  height: 53%;
+  width: 90%; }
+.tabset--section .Choose, .tabset--section .ChooseVraag, .tabset--section .funny {
+  width: 80%;
+  margin: auto;
+  background-color: #356371; }
+.tabset--section .Choose .politicus {
+  background-color: #d5e8ed;
+  height: 21%;
+  width: 80%;
+  margin-bottom: 8%;
+  margin-left: 10%; }
+  .tabset--section .Choose .politicus img {
+    width: 40%; }
+  .tabset--section .Choose .politicus p {
+    color: #356371;
+    letter-spacing: 0.1vw;
+    padding-top: 12%;
+    font-size: 5.5vw;
+    font-weight: 100; }
 
 .tabset--nav .step {
   position: absolute;

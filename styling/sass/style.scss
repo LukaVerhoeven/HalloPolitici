@@ -4,6 +4,8 @@
 $login-bg-button-color: #356371;
 $register-color: #356371;
 $step-color: #356371;
+$Choose-politicus-color:#d5e8ed;
+$vraag-background-color:#48889c;
 
 %comfortaa{
  font-family: 'Open Sans', sans-serif;
@@ -37,6 +39,9 @@ $step-color: #356371;
 }
 %cover{
   background-size: cover;
+}
+%floatleft{
+  float: left;
 }
 
 @import "sliding-tab.scss";
@@ -95,18 +100,18 @@ $step-color: #356371;
 .tabset--section{
   .swiper{
     @extend %fullheight;
-    .actions{
+    .actions , .actions1{
       width: 20%;
       position: absolute;
       top:76%;
       margin-left: 2.5%;
       z-index: 5;
         a{
-          width: 20vw;
-          margin: 0px 0vw 0px 13vw;
-          height: 20vw;
+          width: 22vw;
+          margin: 0px 0vw 0px 11vw;
+          height: 22vw;
         }
-        .dislike{
+        .dislike {
           @extend %cover;
           background-image: url(../img/dislike.png);
         }
@@ -114,6 +119,54 @@ $step-color: #356371;
           @extend %cover;
           background-image: url(../img/like.png);
         }
+        .dislike1{
+          background-image: url(../img/dislike1.png);
+          background-color: rgba(219, 170, 199, 0);
+        }
+        .like1{
+          background-image: url(../img/like1.png);
+          background-color: rgba(219, 170, 199, 0);
+        }
+    }
+  }
+  #tinderslide2  .vraagtext{
+    @extend %white;
+    @extend %archivo;
+    background-color: $vraag-background-color;
+    font-weight: 100;
+    letter-spacing: 0.1vw;
+    font-size: 5vw;
+    padding: 6%;
+    margin: 5%;
+    height: 53%;
+    width: 90%;
+
+  }
+  .Choose, .ChooseVraag, .funny{
+    @extend %fullheight;
+    width: 80%;
+    margin: auto;
+    background-color: $login-bg-button-color;
+  }
+  .Choose .politicus{
+    background-color:$Choose-politicus-color;
+    height: 21%;
+    width: 80%;
+    margin-bottom: 8%;
+    margin-left: 10%;
+    img{
+      @extend %floatleft;
+      width: 40%;
+
+    }
+
+    p{
+      @extend %archivo;
+      color: $login-bg-button-color;
+      letter-spacing: 0.1vw;
+      padding-top: 12%;
+      font-size: 5.5vw;
+      font-weight: 100;
     }
   }
 }
