@@ -21,6 +21,7 @@
 // Global variables
 var _USERID;
 var _LOGINBTN;
+var _APILINK = "http://jorenvh.webhosting.be/api";
 
 // Application module
 var app = {
@@ -39,7 +40,7 @@ var app = {
         // Bind click event to login button
         _LOGINBTN.addEventListener('click', function () {
             //app.faceBookLogin();
-            app.swiped(23276964567, 3, true);
+            app.getAllPolitici(23276860567);
         });
     },
     fbLoginSuccess: function (userData) {
@@ -71,15 +72,49 @@ var app = {
         // Debug device ready event in console
         console.log('device is ready');
     },
-    swiped: function (userID, politicusID, hasLiked) {
+    swipedPolitici: function (userID, politicusID, hasLiked) {
         $.ajax({
             type: "POST",
-            url: "http://jorenvh.webhosting.be/api/politici/vote",
+            url: _APILINK + "/politici/vote",
             dataType: "json",
+            crossDomain: true,
             data: {
                 "userID":       userID,
                 "politicusID":  politicusID,
                 "hasLiked":     hasLiked
+            },
+            success: function (success_response) {
+                console.log(success_response);
+            },
+            error: function (error_response) {
+                console.log(error_response);
+            }
+        });
+    },
+    getAllPolitici: function (userID) {
+        $.ajax({
+            type: "POST",
+            url: _APILINK + "/politici/all",
+            dataType: "json",
+            crossDomain: true,
+            data: {
+                "userID": userID
+            },
+            success: function (success_response) {
+                console.log(success_response);
+            },
+            error: function (error_response) {
+                console.log(error_response);
+            }
+        });
+    },
+    swipedQuestion: function () {
+        $.ajax({
+            type: "GET",
+            url: _APILINK + "/vragen/",
+            dataType: "json",
+            data: {
+
             },
             success: function (success_response) {
                 console.log(success_response);
