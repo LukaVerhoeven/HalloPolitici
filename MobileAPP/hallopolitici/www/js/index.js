@@ -28,6 +28,7 @@ var app = {
     // Application Constructor
     initialize: function() {
         this.getButtons();
+        //this.faceBookLogin();
         this.bindEvents();
     },
     getButtons: function () {
@@ -39,8 +40,7 @@ var app = {
         document.addEventListener('deviceready', this.onDeviceReady, false);
         // Bind click event to login button
         _LOGINBTN.addEventListener('click', function () {
-            //app.faceBookLogin();
-            app.getAllPolitici(23276860567);
+            this.getLikedPolitici(23276860567);
         });
     },
     fbLoginSuccess: function (userData) {
@@ -108,13 +108,14 @@ var app = {
             }
         });
     },
-    swipedQuestion: function () {
+    getLikedPolitici: function (userID) {
         $.ajax({
-            type: "GET",
-            url: _APILINK + "/vragen/",
+            type: "POST",
+            url: _APILINK + "/politici/liked",
             dataType: "json",
+            crossDomain: true,
             data: {
-
+                "userID": userID
             },
             success: function (success_response) {
                 console.log(success_response);
