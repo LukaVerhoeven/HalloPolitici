@@ -20,6 +20,7 @@
 
 // Global variables
 var _USERID;
+var _USERNAME;
 var _LOGINBTN;
 var _APILINK = "http://jorenvh.webhosting.be/api";
 
@@ -40,24 +41,32 @@ var app = {
         document.addEventListener('deviceready', this.onDeviceReady, false);
         // Bind click event to login button
         _LOGINBTN.addEventListener('click', function () {
-            this.getLikedPolitici(23276860567);
+            app.faceBookLogin();
         });
     },
     fbLoginSuccess: function (userData) {
-        // Debug the userID if it exists
-        if(userData.authResponse.userID) {
-            console.log(userData.authResponse.userID);
+        // Debug the userID if it exists and get user name
+        if(userData.authResponse) {
+            // Get user id from the JSON response
+            _USERID = userData.authResponse.userID;
+            // Get user name from facebook id
+            facebookConnectPlugin.api('/me', null, app.getFbUserName);
         }
         else{
-            console.log('no user id');
+            alert('error happend while logging in')
         }
 
-        // Get user id from the JSON response
-        _USERID = userData.authResponse.userID;
+        // Check if userid is set local and send user id to back-end
+        if(_USERID !== null || _USERID !== undefined) {
+            app.sendFbIdAndName(); // Ajax call to back-end with userID that is stored in global _USERID
+        }
 
         // Set user id in local storage
         var userID = window.localStorage.key(0);
         window.localStorage.setItem(0, _USERID);
+    },
+    getFbUserName: function (response) {
+        _USERNAME = response.name;
     },
     faceBookLogin: function() {
         // Facebook API call for login
@@ -67,6 +76,24 @@ var app = {
                 alert("" + error_response)
             }
         );
+    },
+    sendFbId: function () {
+        $.ajax({
+            type: "POST",
+            url: _APILINK + "/login",
+            dataType: "json",
+            crossDomain: true,
+            data: {
+                "userID": _USERID,
+                "username": _USERNAME
+            },
+            success: function (success_response) {
+                console.log(success_response);
+            },
+            error: function (error_response) {
+                console.log(error_response);
+            }
+        });
     },
     onDeviceReady: function() {
         // Debug device ready event in console
