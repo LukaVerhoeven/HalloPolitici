@@ -193,10 +193,11 @@
     padding-top: 2vw;
     margin-bottom: 2vw;
  }
+
  #tinderslide li div:first-child, #tinderslide2 li div:first-child , .ChooseVraag div:first-child ,.Choose div:first-child , .funny div:first-child{
   /*font-family: 'Open Sans', sans-serif;*/
   font-family: 'Comfortaa', cursive;
-  margin-top: 4%;
+  /*margin-top: 4%;*/
   font-weight: 100;
   max-height: 15%;
   letter-spacing: 1px;

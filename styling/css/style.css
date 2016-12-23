@@ -1,7 +1,7 @@
 .tabset--section .funny input {
   font-family: 'Open Sans', sans-serif; }
 
-.login .loginbuttons input, .login .loginbuttons a, .tabset--section #tinderslide .nomore, .tabset--section #tinderslide2 .nomore, .tabset--section #tinderslide2 .vraagtext, .tabset--section .funny #funnyimg .canvastextbalon, .tabset--section .Choose .politicus p, .tabset--nav .step {
+.login .loginbuttons input, .login .loginbuttons a, .tabset--section #tinderslide .nomore, .tabset--section #tinderslide2 .nomore, .tabset--section #tinderslide2 .vraagtext, .tabset--section .funny #funnyimg #center .canvastextbalon, .tabset--section .Choose .politicus p, .tabset--nav .step {
   font-family: 'Archivo Narrow', sans-serif; }
 
 .tabset--nav, .login .loginbuttons input {
@@ -13,7 +13,7 @@
 .login {
   display: inline-block; }
 
-.tabset--section #tinderslide .nomore, .tabset--section #tinderslide2 .nomore {
+.tabset--section #tinderslide .nomore, .tabset--section #tinderslide2 .nomore, .tabset--section .funny #funnyimg #center {
   position: absolute; }
 
 .login .loginbuttons input, .login .loginbuttons a {
@@ -34,7 +34,7 @@
 .box, .tabset--nav, .login, .tabset--section .swiper .actions .dislike, .tabset--section .swiper .actions1 .dislike, .tabset--section .swiper .actions .like, .tabset--section .swiper .actions1 .like {
   background-size: cover; }
 
-.tabset--section .Choose .politicus img {
+.tabset--section .funny #funnyimg #center .canvastextbalon, .tabset--section .Choose .politicus img {
   float: left; }
 
 body {
@@ -165,8 +165,6 @@ body {
   background-image: url(../img/bg.jpg); }
   .login .head {
     height: 44%; }
-    .login .head .replay {
-      background-image: url("../img/replay.png"); }
   .login .animation {
     height: 26%; }
   .login .loginbuttons {
@@ -234,17 +232,18 @@ body {
   height: 57%; }
   .tabset--section .funny #funnyimg .canvaspic {
     width: 80%; }
-  .tabset--section .funny #funnyimg .canvastextbalon {
-    padding-top: 1vw;
-    font-size: 5vw;
-    background-image: url("../img/textbalonStep.png");
-    width: 70vw;
-    position: absolute;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    margin: 0px 5vw;
-    height: 14vh;
-    max-height: 40vh; }
+  .tabset--section .funny #funnyimg #center {
+    width: 200vw; }
+    .tabset--section .funny #funnyimg #center .canvastextbalon {
+      padding-top: 1vw;
+      font-size: 5vw;
+      background-image: url("../img/textbalonStep.png");
+      width: 70vw;
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      margin: 0px 5vw;
+      height: 14vh;
+      max-height: 40vh; }
 .tabset--section .funny input {
   background-color: rgba(255, 255, 255, 0);
   background-image: url("../img/share-facebook.png");

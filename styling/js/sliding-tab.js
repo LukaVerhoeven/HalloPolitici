@@ -32,3 +32,16 @@ $(".fullvraag").click(function(){
 	$(".fullvraag").toggleClass("show");
 
 });
+
+//textbalon stap4
+$(function(){
+    var swiper = document.getElementById("center");
+
+    Hammer(swiper).on("swipeleft", function() {
+          $(swiper).animate({left: "-=80vw"}, 500)
+    });
+
+    Hammer(document.getElementById("center")).on("swiperight", function() {
+          $(swiper).animate({left: "+=80vw"}, 500)
+    });
+})

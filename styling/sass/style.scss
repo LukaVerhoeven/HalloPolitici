@@ -62,9 +62,7 @@ $nieuw-gezicht-kleur: #87b2c0;
       @extend %fullheight;
       // height: 44%;
     }
-    .replay{
-      background-image: url("../img/replay.png");
-    }
+
   }
   .animation{
     height: 26%;
@@ -177,18 +175,22 @@ $nieuw-gezicht-kleur: #87b2c0;
       .canvaspic{
         width: 80%;
       }
-      .canvastextbalon{
-        @extend %archivo;
-        padding-top: 1vw;
-        font-size: 5vw;
-        background-image: url("../img/textbalonStep.png");
-        width: 70vw;
-        position: absolute;
-        background-size: 100% 100%;
-        background-repeat: no-repeat;
-        margin: 0px 5vw;
-        height: 14vh;
-        max-height: 40vh;
+      #center{
+        @extend %absolute;
+        width: 200vw;
+        .canvastextbalon{
+          @extend %floatleft;
+          @extend %archivo;
+          padding-top: 1vw;
+          font-size: 5vw;
+          background-image: url("../img/textbalonStep.png");
+          width: 70vw;
+          background-size: 100% 100%;
+          background-repeat: no-repeat;
+          margin: 0px 5vw;
+          height: 14vh;
+          max-height: 40vh;
+        }
       }
     }
     input{
