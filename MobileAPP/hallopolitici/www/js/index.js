@@ -24,12 +24,16 @@ var _USERNAME = null;
 var _LOGINBTN = null;
 var _ISLOGGEDIN = 0;
 var _APILINK = "http://jorenvh.webhosting.be/api";
+var _ALL_POLITICIANS = [];
+var _POLITICIAN_QUESTIONS = [];
+
 
 // Application module
 const app = {
     // Application Constructor
     initialize: function() {
         this.getButtons();
+        this.getAllPoliticians(_USERID);
         this.bindEvents();
     },
     getButtons: function () {
@@ -128,17 +132,46 @@ const app = {
         }
 
     },
-    getAllPoliticians: function (userID) {
+    getAllPoliticians: function () {
+        $.ajax({
+            type: "GET",
+            url: _APILINK + "/politici/all",
+            crossDomain: true,
+            success: function (success_response) {
+                _ALL_POLITICIANS = success_response;
+            },
+            error: function (error_response) {
+                console.log(error_response);
+            }
+        });
+    },
+    getPoliticianQuestions: function () {
         $.ajax({
             type: "POST",
-            url: _APILINK + "/politici/all",
-            dataType: "json",
+            url: _APILINK + "/politici/vragen",
             crossDomain: true,
             data: {
-                "userID": userID
+                "polID": _POLITICIAN_ID
             },
             success: function (success_response) {
-                console.log(success_response);
+                _POLITICIAN_QUESTIONS = success_response;
+            },
+            error: function (error_response) {
+                console.log(error_response);
+            }
+        });
+    },
+    voteForQuestion: function (userID, questionID) {
+        $.ajax({
+            type: "POST",
+            url: _APILINK + "/politici/vragen/vote",
+            crossDomain: true,
+            data: {
+                "userID": userID,
+                "questionID": questionID
+            },
+            success: function (success_response) {
+                _POLITICIAN_QUESTIONS = success_response;
             },
             error: function (error_response) {
                 console.log(error_response);
