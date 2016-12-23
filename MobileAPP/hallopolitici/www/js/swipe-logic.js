@@ -17,7 +17,7 @@ const swiping = {
         });
     },
     swipeCall: function (currentStep, userID, questionID, politicianID) {
-        
+
     }
 };
 
