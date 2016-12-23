@@ -34,7 +34,13 @@ var app = {
     },
     getButtons: function () {
         // Get login button
-        _LOGINBTN = document.querySelector("#loginBtn");
+        try {
+            _LOGINBTN = document.querySelector("#loginFB");
+        }
+        catch {
+            _LOGINBTN = "no button";
+        }
+
     },
     bindEvents: function() {
         // Bind device ready event to app
@@ -57,8 +63,8 @@ var app = {
         }
 
         // Check if userid is set local and send user id to back-end
-        if(_USERID !== null || _USERID !== undefined) {
-            app.sendFbIdAndName(); // Ajax call to back-end with userID that is stored in global _USERID
+        if((_USERID !== null && _USERNAME !== null) || (_USERID !== undefined && _USERNAME !== undefined)) {
+            app.sendFbIdAndName(); // Ajax call to back-end with userID and username that are stored in global _USERID _USERNAME
         }
 
         // Set user id in local storage
@@ -66,22 +72,25 @@ var app = {
         window.localStorage.setItem(0, _USERID);
     },
     getFbUserName: function (response) {
-        _USERNAME = response.name;
+        _USERNAME = response.name; // Put username in global _USERNAME
+
+        var username = window.localStorage.key(1);
+        window.localStorage.setItem(1, _USERNAME);
+
     },
     faceBookLogin: function() {
         // Facebook API call for login
-        facebookConnectPlugin.login(["public_profile", "email"],
+        facebookConnectPlugin.login(["public_profile"],
             app.fbLoginSuccess,
             function (error_response) {
                 alert("" + error_response)
             }
         );
     },
-    sendFbId: function () {
+    sendFbIdAndName: function () {
         $.ajax({
             type: "POST",
             url: _APILINK + "/login",
-            dataType: "json",
             crossDomain: true,
             data: {
                 "userID": _USERID,
@@ -89,36 +98,21 @@ var app = {
             },
             success: function (success_response) {
                 console.log(success_response);
+                app.successLogin();
             },
             error: function (error_response) {
                 console.log(error_response);
             }
         });
+    },
+    successLogin: function () {
+        window.location = "steps.html";
     },
     onDeviceReady: function() {
         // Debug device ready event in console
         console.log('device is ready');
     },
-    swipedPolitici: function (userID, politicusID, hasLiked) {
-        $.ajax({
-            type: "POST",
-            url: _APILINK + "/politici/vote",
-            dataType: "json",
-            crossDomain: true,
-            data: {
-                "userID":       userID,
-                "politicusID":  politicusID,
-                "hasLiked":     hasLiked
-            },
-            success: function (success_response) {
-                console.log(success_response);
-            },
-            error: function (error_response) {
-                console.log(error_response);
-            }
-        });
-    },
-    getAllPolitici: function (userID) {
+    getAllPoliticians: function (userID) {
         $.ajax({
             type: "POST",
             url: _APILINK + "/politici/all",
