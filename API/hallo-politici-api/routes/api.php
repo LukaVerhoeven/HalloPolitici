@@ -20,7 +20,7 @@ Route::get('/user', function (Request $request) {
 Route::post('login', 'LoginController@login'); //inloggen
 
 //Stap 1 alle politici ophalen
-Route::post('politici/all', 'Step1Controller@getStartingPolitici'); //alle politici ophalen in random order
+Route::get('politici/all', 'Step1Controller@getStartingPolitici'); //alle politici ophalen in random order
 //Route::post('politici/vote', 'Step1Controller@voteForPoliticus');
 //post route => liked/disliked politici in db opslaan => user (fb id?) linken met politicus id en bolean hasLiked op true of false
 
