@@ -18,11 +18,6 @@ class Vraag_antwoord extends Model
         return $this->belongsTo('App\Vraag', 'vraag_id')->whereNull('afgewezen_datum');
     }
 
-    public function getAllPoliticiForQuestion()
-    {
-        //op 1 of andere manier alle politici ophalen waaraan die vraag gesteld is.
-    }
-
 
 
 }

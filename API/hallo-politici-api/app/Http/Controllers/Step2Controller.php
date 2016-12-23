@@ -8,7 +8,7 @@ use App\Politicus_stem;
 
 class Step2Controller extends Controller
 {
-    protected function getLikedPolitici(Request $request){
+    /*protected function getLikedPolitici(Request $request){
         $userID = $request->userID;
         dd($userID);
         try {
@@ -18,5 +18,5 @@ class Step2Controller extends Controller
         }
 
         return $likedPolitici;
-    }
+    }*/
 }
