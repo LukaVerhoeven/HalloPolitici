@@ -107,23 +107,6 @@ var app = {
                 console.log(error_response);
             }
         });
-    },
-    getLikedPolitici: function (userID) {
-        $.ajax({
-            type: "POST",
-            url: _APILINK + "/politici/liked",
-            dataType: "json",
-            crossDomain: true,
-            data: {
-                "userID": userID
-            },
-            success: function (success_response) {
-                console.log(success_response);
-            },
-            error: function (error_response) {
-                console.log(error_response);
-            }
-        });
     }
 };
 
