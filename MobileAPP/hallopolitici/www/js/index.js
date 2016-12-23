@@ -19,79 +19,79 @@
 
 
 // Global variables
-var _USERID;
-var _USERNAME;
-var _LOGINBTN;
+var _USERID = null;
+var _USERNAME = null;
+var _LOGINBTN = null;
 var _ISLOGGEDIN = 0;
 var _APILINK = "http://jorenvh.webhosting.be/api";
 
 // Application module
-var app = {
-        // Application Constructor
-        initialize: function() {
-            this.getButtons();
-            this.bindEvents();
-        },
-        getButtons: function () {
-            // Get login button
-            try {
-                _LOGINBTN = document.querySelector("#loginFB");
-            }
-            catch (error){
+const app = {
+    // Application Constructor
+    initialize: function() {
+        this.getButtons();
+        this.bindEvents();
+    },
+    getButtons: function () {
+        // Get login button
+        try {
+            _LOGINBTN = document.querySelector("#loginFB");
+        }
+        catch (error){
+            console.log(error);
+        }
+    },
+    bindEvents: function() {
+        // Bind device ready event to app
+        document.addEventListener('deviceready', this.onDeviceReady, false);
+        // Bind click event to login button
+        if(_LOGINBTN !== null) {
+            _LOGINBTN.addEventListener('click', function () {
+                app.faceBookLogin();
+            });
+        }
 
-            }
-        },
-        bindEvents: function() {
-            // Bind device ready event to app
-            document.addEventListener('deviceready', this.onDeviceReady, false);
-            // Bind click event to login button
-            if(_LOGINBTN !== null) {
-                _LOGINBTN.addEventListener('click', function () {
-                    app.faceBookLogin();
-                });
-            }
+    },
+    checkIfLoggedIn: function () {
+        // check if logged in, in global variable
+        if (localStorage.getItem(2) === "1" && (window.location.pathname === "index.html" || window.location.pathname === "/")) {
+            window.location = "steps.html";
+        }
+    },
+    fbLoginSuccess: function (userData) {
+        // Debug the userID if it exists and get user name
+        if(userData.authResponse) {
+            // Get user id from the JSON response
+            _USERID = userData.authResponse.userID;
+            _ISLOGGEDIN = 1;
+            // Get user name from facebook id
+            facebookConnectPlugin.api('/me', null, app.getFbUserName);
+        }
+        else{
+            alert('error happend while logging in')
+        }
 
-        },
-        checkIfLoggedIn: function () {
-            // check if logged in, in global variable
-            if (localStorage.getItem(2) === "1" && (window.location.pathname === "index.html" || window.location.pathname === "/")) {
-                window.location = "steps.html";
-            }
-        },
-        fbLoginSuccess: function (userData) {
-            // Debug the userID if it exists and get user name
-            if(userData.authResponse) {
-                // Get user id from the JSON response
-                _USERID = userData.authResponse.userID;
-                _ISLOGGEDIN = 1;
-                // Get user name from facebook id
-                facebookConnectPlugin.api('/me', null, app.getFbUserName);
-            }
-            else{
-                alert('error happend while logging in')
-            }
+        // Check if userid is set local and send user id to back-end
+        if((_USERID !== null && _USERNAME !== null) || (_USERID !== undefined && _USERNAME !== undefined)) {
+            app.sendFbIdAndName(); // Ajax call to back-end with userID and username that are stored in global _USERID _USERNAME
+        }
 
-            // Check if userid is set local and send user id to back-end
-            if((_USERID !== null && _USERNAME !== null) || (_USERID !== undefined && _USERNAME !== undefined)) {
-                app.sendFbIdAndName(); // Ajax call to back-end with userID and username that are stored in global _USERID _USERNAME
-            }
+        // Set user id in local storage
+        //var userID = window.localStorage.key(0);
+        window.localStorage.setItem(0, _USERID);
+        //var isLoggedIn = window.localStorage.key(2);
+        window.localStorage.setItem(2, _ISLOGGEDIN);
+    },
+    getFbUserName: function (response) {
+        _USERNAME = response.name; // Put username in global _USERNAME
 
-            // Set user id in local storage
-            //var userID = window.localStorage.key(0);
-            window.localStorage.setItem(0, _USERID);
-            //var isLoggedIn = window.localStorage.key(2);
-            window.localStorage.setItem(2, _ISLOGGEDIN);
-        },
-        getFbUserName: function (response) {
-            _USERNAME = response.name; // Put username in global _USERNAME
+        var username = window.localStorage.key(1);
+        window.localStorage.setItem(1, _USERNAME);
 
-            var username = window.localStorage.key(1);
-            window.localStorage.setItem(1, _USERNAME);
-
-        },
-        faceBookLogin: function() {
-            // Facebook API call for login
-            facebookConnectPlugin.login(["public_profile"],
+    },
+    faceBookLogin: function() {
+        // Facebook API call for login
+        facebookConnectPlugin.login(["public_profile"],
             app.fbLoginSuccess,
             function (error_response) {
                 alert("" + error_response)
@@ -122,7 +122,7 @@ var app = {
     onDeviceReady: function() {
         // Debug device ready event in console
         console.log('device is ready');
-        // check if looge
+        // check if logged in
         if(window.location.pathname === "/index.html" || window.location.pathname === "/") {
             app.checkIfLoggedIn();
         }
