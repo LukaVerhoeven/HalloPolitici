@@ -60,6 +60,18 @@ body {
         display: block;
         height: 80%;
       }
+			.replay{
+				background-image: url("../img/replay.png");
+				height: 23%;
+				width: 27%;
+				display: block;
+				background-size: 85% 85%;
+				background-repeat: no-repeat;
+				background-position: 5px 4px;
+				z-index: 50;
+				margin-top: 0%;
+				margin-left: 55%;
+			}
   }
 
 .tabset--nav {

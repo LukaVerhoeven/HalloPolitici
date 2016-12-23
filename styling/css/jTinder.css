@@ -189,6 +189,10 @@
  #tinderslide ul li div:first-child{
    margin-top: 0px;
  }
+ .tabset--section div.funny div:first-child{
+    padding-top: 2vw;
+    margin-bottom: 2vw;
+ }
  #tinderslide li div:first-child, #tinderslide2 li div:first-child , .ChooseVraag div:first-child ,.Choose div:first-child , .funny div:first-child{
   /*font-family: 'Open Sans', sans-serif;*/
   font-family: 'Comfortaa', cursive;
