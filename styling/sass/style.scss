@@ -151,6 +151,10 @@ $nieuw-gezicht-kleur: #87b2c0;
     @extend %white;
     @extend %archivo;
     background-color: $vraag-background-color;
+    background-image: url("../img/Leesmeer.png");
+    background-repeat: no-repeat;
+    background-position: 87% 88%;
+    background-size: 42%;
     font-weight: 100;
     letter-spacing: 0.1vw;
     font-size: 5vw;
@@ -160,17 +164,23 @@ $nieuw-gezicht-kleur: #87b2c0;
     width: 90%;
 
   }
+
+
   .funny{
     .funnyimg{
-        height: 50%;
+
     }
     input{
       @extend %white;
       @extend %comfortaa;
-      background-color: $nieuw-gezicht-kleur;
+      background-color: rgba(255, 255, 255, 0);
+      background-image: url("../img/share-facebook.png");
+      background-size: 99% 66%;
+      background-repeat: no-repeat;
+      width: 80%;
       border: 0px;
       padding: 10%;
-          font-size: 5vw;
+      font-size: 5vw;
 
     }
   }

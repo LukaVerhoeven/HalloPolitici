@@ -22,3 +22,9 @@ $(".nav--item").click(function(){
 
 
 });
+$(".fullvraag").click(function(){
+	console.log("test");
+	$(".fullvraag").toggleClass("block");
+	$(".fullvraag").toggleClass("show");
+
+});

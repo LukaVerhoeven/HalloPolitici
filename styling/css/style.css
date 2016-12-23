@@ -54,6 +54,27 @@ body {
   display: flex;
   flex-flow: column wrap;
   box-shadow: 0px 0px 14px 4px rgba(0, 0, 0, 0.1); }
+  .box .fullvraag {
+    background-color: rgba(255, 255, 255, 0);
+    color: rgba(255, 255, 255, 0);
+    position: absolute;
+    width: 39vw;
+    height: 9vh;
+    padding: 7%;
+    margin: 97% 45%;
+    margin-bottom: 10%;
+    z-index: 20;
+    -webkit-transition: width 1s, height 1s, padding 1s,margin 1s;
+    /* For Safari 3.1 to 6.0 */
+    transition: width 1s, height 1s, padding 1s,margin 1s; }
+  .box .block {
+    background: #48889c;
+    color: white; }
+  .box .show {
+    width: 100vw;
+    height: 100vh;
+    padding: 10%;
+    margin: 0%; }
 
 .tabset--header {
   height: 20%; }
@@ -182,6 +203,10 @@ body {
   margin-top: 42%; }
 .tabset--section #tinderslide2 .vraagtext {
   background-color: #48889c;
+  background-image: url("../img/Leesmeer.png");
+  background-repeat: no-repeat;
+  background-position: 87% 88%;
+  background-size: 42%;
   font-weight: 100;
   letter-spacing: 0.1vw;
   font-size: 5vw;
@@ -189,10 +214,12 @@ body {
   margin: 5%;
   height: 53%;
   width: 90%; }
-.tabset--section .funny .funnyimg {
-  height: 50%; }
 .tabset--section .funny input {
-  background-color: #87b2c0;
+  background-color: rgba(255, 255, 255, 0);
+  background-image: url("../img/share-facebook.png");
+  background-size: 99% 66%;
+  background-repeat: no-repeat;
+  width: 80%;
   border: 0px;
   padding: 10%;
   font-size: 5vw; }
