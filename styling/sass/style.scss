@@ -6,6 +6,7 @@ $register-color: #356371;
 $step-color: #356371;
 $Choose-politicus-color:#d5e8ed;
 $vraag-background-color:#48889c;
+$nieuw-gezicht-kleur: #87b2c0;
 
 %comfortaa{
  font-family: 'Open Sans', sans-serif;
@@ -21,6 +22,9 @@ $vraag-background-color:#48889c;
 }
 %inlineblock{
   display: inline-block;
+}
+%absolute{
+  position: absolute;
 }
 %marginauto{
   margin: auto;
@@ -100,6 +104,16 @@ $vraag-background-color:#48889c;
 .tabset--section{
   .swiper{
     @extend %fullheight;
+    .actions1{
+      a:first-child{
+        background-image: url(../img/dislike1.png);
+        background-color: rgba(219, 170, 199, 0);
+      }
+      a:last-child{
+        background-image: url(../img/like1.png);
+        background-color: rgba(219, 170, 199, 0);
+      }
+    }
     .actions , .actions1{
       width: 20%;
       position: absolute;
@@ -119,14 +133,18 @@ $vraag-background-color:#48889c;
           @extend %cover;
           background-image: url(../img/like.png);
         }
-        .dislike1{
-          background-image: url(../img/dislike1.png);
-          background-color: rgba(219, 170, 199, 0);
-        }
-        .like1{
-          background-image: url(../img/like1.png);
-          background-color: rgba(219, 170, 199, 0);
-        }
+
+    }
+  }
+  #tinderslide, #tinderslide2{
+    .nomore{
+      @extend %archivo;
+      @extend %absolute;
+      width: 90%;
+      margin-left: 5%;
+      font-size: 7vw;
+      margin-top: 42%;
+
     }
   }
   #tinderslide2  .vraagtext{
@@ -141,6 +159,20 @@ $vraag-background-color:#48889c;
     height: 53%;
     width: 90%;
 
+  }
+  .funny{
+    .funnyimg{
+        height: 50%;
+    }
+    input{
+      @extend %white;
+      @extend %comfortaa;
+      background-color: $nieuw-gezicht-kleur;
+      border: 0px;
+      padding: 10%;
+          font-size: 5vw;
+
+    }
   }
   .Choose, .ChooseVraag, .funny{
     @extend %fullheight;
@@ -167,6 +199,11 @@ $vraag-background-color:#48889c;
       padding-top: 12%;
       font-size: 5.5vw;
       font-weight: 100;
+      padding: 0px;
+      &:first-of-type{
+        padding-top: 5%;
+        margin-bottom: 0px;
+      }
     }
   }
 }

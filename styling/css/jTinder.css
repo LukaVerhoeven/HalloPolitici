@@ -58,6 +58,14 @@
     text-shadow: -1px -1px 0 rgba(0, 0, 0, .2);
 }
 
+#tinderslide li p, .partij{
+  margin: 0px;
+  color: white;
+  letter-spacing: 0.1vw;
+  font-size: 4vw;
+  font-weight: 100;
+}
+
 /* Image rotation */
 #tinderslide li.pane1 , #tinderslide2 li.pane1{
     -webkit-transform: rotate(-1deg);
@@ -178,7 +186,10 @@
 #tinderslide li , #tinderslide2 li{
   background-color: #315e6d;
 }
-#tinderslide li div:first-child, #tinderslide2 li div:first-child , .ChooseVraag div:first-child ,.Choose div:first-child , .funny div:first-child{
+ #tinderslide ul li div:first-child{
+   margin-top: 0px;
+ }
+ #tinderslide li div:first-child, #tinderslide2 li div:first-child , .ChooseVraag div:first-child ,.Choose div:first-child , .funny div:first-child{
   /*font-family: 'Open Sans', sans-serif;*/
   font-family: 'Comfortaa', cursive;
   margin-top: 4%;

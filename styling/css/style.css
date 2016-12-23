@@ -1,4 +1,7 @@
-.login .loginbuttons input, .login .loginbuttons a, .tabset--section #tinderslide2 .vraagtext, .tabset--section .Choose .politicus p, .tabset--nav .step {
+.tabset--section .funny input {
+  font-family: 'Open Sans', sans-serif; }
+
+.login .loginbuttons input, .login .loginbuttons a, .tabset--section #tinderslide .nomore, .tabset--section #tinderslide2 .nomore, .tabset--section #tinderslide2 .vraagtext, .tabset--section .Choose .politicus p, .tabset--nav .step {
   font-family: 'Archivo Narrow', sans-serif; }
 
 .tabset--nav, .login .loginbuttons input {
@@ -9,6 +12,9 @@
 
 .login {
   display: inline-block; }
+
+.tabset--section #tinderslide .nomore, .tabset--section #tinderslide2 .nomore {
+  position: absolute; }
 
 .login .loginbuttons input, .login .loginbuttons a {
   margin: auto; }
@@ -22,7 +28,7 @@
 .login .loginbuttons input {
   text-align: right; }
 
-.login .loginbuttons input, .tabset--section #tinderslide2 .vraagtext {
+.login .loginbuttons input, .tabset--section #tinderslide2 .vraagtext, .tabset--section .funny input {
   color: white; }
 
 .box, .tabset--nav, .login, .tabset--section .swiper .actions .dislike, .tabset--section .swiper .actions1 .dislike, .tabset--section .swiper .actions .like, .tabset--section .swiper .actions1 .like {
@@ -40,7 +46,7 @@ body {
 
 .swiper .wrap {
   margin-left: 4%;
-  padding-top: 0px; }
+  padding-top: 3%; }
 
 .box {
   overflow: hidden;
@@ -149,6 +155,12 @@ body {
       font-size: 5vw;
       margin-top: 3%; }
 
+.tabset--section .swiper .actions1 a:first-child {
+  background-image: url(../img/dislike1.png);
+  background-color: rgba(219, 170, 199, 0); }
+.tabset--section .swiper .actions1 a:last-child {
+  background-image: url(../img/like1.png);
+  background-color: rgba(219, 170, 199, 0); }
 .tabset--section .swiper .actions, .tabset--section .swiper .actions1 {
   width: 20%;
   position: absolute;
@@ -163,12 +175,11 @@ body {
     background-image: url(../img/dislike.png); }
   .tabset--section .swiper .actions .like, .tabset--section .swiper .actions1 .like {
     background-image: url(../img/like.png); }
-  .tabset--section .swiper .actions .dislike1, .tabset--section .swiper .actions1 .dislike1 {
-    background-image: url(../img/dislike1.png);
-    background-color: rgba(219, 170, 199, 0); }
-  .tabset--section .swiper .actions .like1, .tabset--section .swiper .actions1 .like1 {
-    background-image: url(../img/like1.png);
-    background-color: rgba(219, 170, 199, 0); }
+.tabset--section #tinderslide .nomore, .tabset--section #tinderslide2 .nomore {
+  width: 90%;
+  margin-left: 5%;
+  font-size: 7vw;
+  margin-top: 42%; }
 .tabset--section #tinderslide2 .vraagtext {
   background-color: #48889c;
   font-weight: 100;
@@ -178,6 +189,13 @@ body {
   margin: 5%;
   height: 53%;
   width: 90%; }
+.tabset--section .funny .funnyimg {
+  height: 50%; }
+.tabset--section .funny input {
+  background-color: #87b2c0;
+  border: 0px;
+  padding: 10%;
+  font-size: 5vw; }
 .tabset--section .Choose, .tabset--section .ChooseVraag, .tabset--section .funny {
   width: 80%;
   margin: auto;
@@ -195,7 +213,11 @@ body {
     letter-spacing: 0.1vw;
     padding-top: 12%;
     font-size: 5.5vw;
-    font-weight: 100; }
+    font-weight: 100;
+    padding: 0px; }
+    .tabset--section .Choose .politicus p:first-of-type {
+      padding-top: 5%;
+      margin-bottom: 0px; }
 
 .tabset--nav .step {
   position: absolute;
