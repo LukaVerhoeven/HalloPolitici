@@ -19,7 +19,7 @@ class Step3Controller extends Controller
         foreach ($vragen as $vraag) {
             $politici_met_vraag = Vraag_antwoord::where('vraag_id', $vraag->vraag_id)->with('politicus')->select('vraag_id', 'politicus_id', 'kort_antwoord')->with('vraag')->get();
 
-            array_push($vragen_met_alle_politici, [$vraag->vraag_id => $politici_met_vraag]);
+            array_push($vragen_met_alle_politici, $politici_met_vraag);
         }
 
         if(empty($vragen_met_alle_politici)){
