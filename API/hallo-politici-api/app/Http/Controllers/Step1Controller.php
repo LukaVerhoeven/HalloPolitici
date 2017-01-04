@@ -13,7 +13,7 @@ class Step1Controller extends Controller
     protected function getStartingPolitici(Request $request){
         $politici = Politicus::has('vragen')
         ->with('partijnaam')
-        //->inRandomOrder()
+        ->inRandomOrder()
         ->select('id','voornaam', 'familienaam', 'afbeelding', 'partij_id')
         ->get();
         //enkel politici tonen die vragen hebben
