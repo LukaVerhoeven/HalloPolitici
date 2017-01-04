@@ -137,7 +137,6 @@ const app = {
             url: _APILINK + "/politici/all",
             dataType: "json",
             success: function (success_response) {
-                console.log(success_response);
                 _ALL_POLITICIANS = success_response;
                 window.localStorage.setItem(4, JSON.stringify(_ALL_POLITICIANS));
             },
@@ -156,12 +155,11 @@ const app = {
                 "userID": localStorage.getItem(0)
             },
             success: function (success_response) {
-                console.log(success_response);
                 _POLITICIAN_QUESTIONS = success_response;
-                swiping.addQuestionsForPoliticians();
+                swiping.addQuestionsForPoliticians('success');
             },
             error: function (error_response) {
-                console.log("DIKKE PIK");
+                swiping.addQuestionsForPoliticians('error');
             }
         });
     },
@@ -175,7 +173,6 @@ const app = {
                 "questionID": questionID
             },
             success: function (success_response) {
-                // _POLITICIAN_QUESTIONS = success_response;
                 console.log(success_response);
             },
             error: function (error_response) {

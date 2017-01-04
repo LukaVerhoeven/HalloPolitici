@@ -55,20 +55,31 @@ const swiping = {
             </div>`
         );
     },
-    addQuestionsForPoliticians: function (politicianID) {
-        console.log(_POLITICIAN_QUESTIONS);
-
-        _POLITICIAN_QUESTIONS.forEach(function (item) {
+    addQuestionsForPoliticians: function (res) {
+        if ( res === "success" ) {
+            _POLITICIAN_QUESTIONS.forEach(function (item, key) {
+                key = _POLITICIAN_QUESTIONS.length - key;
+                _TINDER_SLIDE2$.append(
+                    `<li class="pane" dataQuestionId=`+ item[0].vraag.id +`>
+                        <div>Vraag` + key + `</div>
+                        <div class="vraagtext">
+                            ` + item[0].vraag.korte_vraag + `
+                        </div>
+                    </li>`
+                );
+            });
+            startjTinder2();
+        }
+        else if ( res === "error" ) {
             _TINDER_SLIDE2$.append(
-                `<li class="pane" dataQuestionId=`+ item[0].vraag.id +`>
+                `<li class="pane">
                     <div></div>
                     <div class="vraagtext">
-                        ` + item[0].vraag.korte_vraag + `
+                        Geen vragen meer voor deze politicus...
                     </div>
                 </li>`
             );
-        });
-        startjTinder2();
+        }
     }
 };
 
