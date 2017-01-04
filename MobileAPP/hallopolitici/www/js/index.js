@@ -145,16 +145,17 @@ const app = {
             }
         });
     },
-    getPoliticianQuestions: function (politicanID) {
+    getPoliticianQuestions: function (politicianID) {
         $.ajax({
             type: "POST",
             url: _APILINK + "/politici/vragen",
             dataType: "json",
             data: {
-                "polID": politicanID
+                "polID": politicianID
             },
             success: function (success_response) {
                 _POLITICIAN_QUESTIONS = success_response;
+                swiping.addQuestionsForPoliticians();
             },
             error: function (error_response) {
                 console.log(error_response);
@@ -171,7 +172,8 @@ const app = {
                 "questionID": questionID
             },
             success: function (success_response) {
-                _POLITICIAN_QUESTIONS = success_response;
+                // _POLITICIAN_QUESTIONS = success_response;
+                console.log(success_response);
             },
             error: function (error_response) {
                 console.log(error_response);
