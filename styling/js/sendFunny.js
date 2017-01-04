@@ -1,4 +1,5 @@
 var _APILINK = "http://jorenvh.webhosting.be/api";
+
 const app2 = {
 sendFunnyElement: function (text,imgURL) {
   $.ajax({
@@ -19,6 +20,8 @@ sendFunnyElement: function (text,imgURL) {
     });
   }
 }
+
+
 $('#FacebookPost').click(function () {
   var imgURL = $('.canvaspic').attr('src');
   var text = $('.activeBalon').text();
