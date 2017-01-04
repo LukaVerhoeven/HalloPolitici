@@ -266,6 +266,7 @@ body {
   background-color: #356371; }
 .tabset--section .Choose .politicus {
   background-color: #d5e8ed;
+  overflow: hidden;
   height: 21%;
   width: 80%;
   margin-bottom: 8%;
@@ -280,7 +281,6 @@ body {
     font-weight: 100;
     padding: 0px; }
     .tabset--section .Choose .politicus p:first-of-type {
-      padding-top: 5%;
       margin-bottom: 0px; }
 
 .tabset--nav .step {

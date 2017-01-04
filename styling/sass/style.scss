@@ -223,6 +223,7 @@ $nieuw-gezicht-kleur: #87b2c0;
   }
   .Choose .politicus{
     background-color:$Choose-politicus-color;
+    overflow: hidden;
     height: 21%;
     width: 80%;
     margin-bottom: 8%;
@@ -242,7 +243,6 @@ $nieuw-gezicht-kleur: #87b2c0;
       font-weight: 100;
       padding: 0px;
       &:first-of-type{
-        padding-top: 5%;
         margin-bottom: 0px;
       }
     }

@@ -1,18 +1,17 @@
-var _APILINK = "http://jorenvh.webhosting.be/api";
+var _HOSTING = "http://jorenvh.webhosting.be";
 
-const app2 = {
+const funny = {
 sendFunnyElement: function (text,imgURL) {
   $.ajax({
         type: "POST",
-        url: _APILINK + "/generate-img",
+        url: _HOSTING + "/api" + "/generate-img",
         crossDomain: true,
         data: {
             "text": text,
-            "img": imgURL
+            "image_path": imgURL
         },
         success: function (success_response) {
-            console.log(success_response);
-            app.successLogin();
+            console.log(_HOSTING + "/image/" +success_response);
         },
         error: function (error_response) {
             console.log(error_response);
@@ -25,5 +24,5 @@ sendFunnyElement: function (text,imgURL) {
 $('#FacebookPost').click(function () {
   var imgURL = $('.canvaspic').attr('src');
   var text = $('.activeBalon').text();
-  app2.sendFunnyElement(text,imgURL);
+  funny.sendFunnyElement(text,imgURL);
 });
