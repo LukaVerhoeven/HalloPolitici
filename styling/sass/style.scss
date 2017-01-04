@@ -215,6 +215,9 @@ $nieuw-gezicht-kleur: #87b2c0;
       }
     }
   }
+  .Choose{
+    overflow: scroll;
+  }
   .Choose, .ChooseVraag, .funny{
     @extend %fullheight;
     width: 80%;

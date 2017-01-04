@@ -260,6 +260,8 @@ body {
   height: 12%; }
   .tabset--section .funny input:last-of-type {
     background-image: url("../img/download.png"); }
+.tabset--section .Choose {
+  overflow: scroll; }
 .tabset--section .Choose, .tabset--section .ChooseVraag, .tabset--section .funny {
   width: 80%;
   margin: auto;
