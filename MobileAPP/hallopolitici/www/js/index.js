@@ -33,7 +33,7 @@ const app = {
     // Application Constructor
     initialize: function() {
         this.getButtons();
-        this.getAllPoliticians(_USERID);
+        app.getAllPoliticians();
         this.bindEvents();
     },
     getButtons: function () {
@@ -136,9 +136,10 @@ const app = {
         $.ajax({
             type: "GET",
             url: _APILINK + "/politici/all",
-            crossDomain: true,
+            dataType: "json",
             success: function (success_response) {
                 _ALL_POLITICIANS = success_response;
+                window.localStorage.setItem(4, JSON.stringify(_ALL_POLITICIANS));
             },
             error: function (error_response) {
                 console.log(error_response);
@@ -149,12 +150,13 @@ const app = {
         $.ajax({
             type: "POST",
             url: _APILINK + "/politici/vragen",
-            crossDomain: true,
+            dataType: "json",
             data: {
                 "polID": _POLITICIAN_ID
             },
             success: function (success_response) {
                 _POLITICIAN_QUESTIONS = success_response;
+
             },
             error: function (error_response) {
                 console.log(error_response);
@@ -165,7 +167,7 @@ const app = {
         $.ajax({
             type: "POST",
             url: _APILINK + "/politici/vragen/vote",
-            crossDomain: true,
+            dataType: "json",
             data: {
                 "userID": userID,
                 "questionID": questionID

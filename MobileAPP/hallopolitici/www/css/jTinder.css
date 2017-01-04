@@ -67,20 +67,12 @@
 }
 
 /* Image rotation */
-#tinderslide li.pane1 , #tinderslide2 li.pane1{
+#tinderslide li.pane , #tinderslide2 li.pane{
     -webkit-transform: rotate(-1deg);
     -moz-transform: rotate(-1deg);
     -o-transform: rotate(-1deg);
     -ms-transform: rotate(-1deg);
     transform: rotate(-1deg);
-}
-
-#tinderslide li.pane2 , #tinderslide2 li.pane2{
-    -webkit-transform: rotate(2deg);
-    -moz-transform: rotate(2deg);
-    -o-transform: rotate(2deg);
-    -ms-transform: rotate(2deg);
-    transform: rotate(2deg);
 }
 
 /* Like & dislike badge images */
@@ -111,9 +103,9 @@
 }
 
 /* Image container */
-#tinderslide .img, #tinderslide2 .img{
-    height: 50%;
-    width: 90%;
+#tinderslide img, #tinderslide2 img{
+    height: auto;
+    max-width: 90%;
     margin-left: 5%;
     margin-top: 7%;
     margin-bottom: 5px;
@@ -205,25 +197,8 @@
   padding-top: 7%;
 }
 /* jTinder images */
-#tinderslide .pane5 .img{
-    background: url("../img/bartje.jpg") no-repeat scroll center center;
-    background-size: cover;
-}
-#tinderslide .pane4 .img {
-    background: url("../img/bartje.jpg") no-repeat scroll center center;
-    background-size: cover;
-}
-#tinderslide .pane3 .img {
-    background: url("../img/bartje.jpg") no-repeat scroll center center;
-    background-size: cover;
-}
-#tinderslide .pane2 .img{
-    background: url("../img/bartje.jpg") no-repeat scroll center center;
-    background-size: cover;
-}
-#tinderslide .pane1 .img {
-    background: url("../img/bartje.jpg") no-repeat scroll center center;
-    background-size: cover;
+#tinderslide .pane img {
+    width: 75%;
 }
 
 /* jTinder status text */
