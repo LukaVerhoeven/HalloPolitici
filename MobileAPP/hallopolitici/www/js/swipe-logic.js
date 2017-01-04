@@ -14,27 +14,17 @@ var _PICK_POLITICIAN$ = $("#pick_politician");
 
 const swiping = {
     initialize: function () {
-        swiping.shuffleArray(_ALL_POLITICIANS);
+        swiping.addPoliticianCards();
     },
     bindEvents: function () {
 
-    },
-    shuffleArray: function (a, callback) {
-        var j, x, i;
-        for (i = a.length; i; i--) {
-            j = Math.floor(Math.random() * i);
-            x = a[i - 1];
-            a[i - 1] = a[j];
-            a[j] = x;
-        }
-        swiping.addPoliticianCards();
     },
     addToLiked: function (politicianID) {
         _LIKED_POLITICIAN_ID.push(parseInt(politicianID));
         swiping.addSelectedPoliticianCards();
     },
     addPoliticianCards: function () {
-        for(i=0; i <= 15; i++){
+        for(i=0; i < _ALL_POLITICIANS.length; i++){
             _TINDER_SLIDE$.append(
                 `<li class="pane" dataPoliticianId="` + _ALL_POLITICIANS[i].id + `">
                     <h3>` + _ALL_POLITICIANS[i].voornaam + ` ` + _ALL_POLITICIANS[i].familienaam + `</h3>
@@ -67,6 +57,7 @@ const swiping = {
     },
     addQuestionsForPoliticians: function (politicianID) {
         console.log(_POLITICIAN_QUESTIONS);
+
         _POLITICIAN_QUESTIONS.forEach(function (item) {
             _TINDER_SLIDE2$.append(
                 `<li class="pane" dataQuestionId=`+ item[0].vraag.id +`>

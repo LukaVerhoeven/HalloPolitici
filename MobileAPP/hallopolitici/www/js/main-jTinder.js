@@ -39,7 +39,7 @@ function startjTinder2() {
         },
         // like callback
         onLike: function (item) {
-            app.voteForQuestion(_USERID, item[0].attributes.dataQuestionId.value);
+            app.voteForQuestion(localStorage.getItem(0), item[0].attributes.dataQuestionId.value);
         },
         animationRevertSpeed: 200,
         animationSpeed: 400,
