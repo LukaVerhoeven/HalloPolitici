@@ -36,6 +36,8 @@ $(".fullvraag").click(function(){
 
 });
 
+
+
 //textbalon stap4
 $(function(){
     var swiper = document.getElementById("center");
@@ -49,10 +51,13 @@ $(function(){
 			Hammer(swiper).on("swipeleft", function() {
 					if (current <items-1) {
 						var currentBalon = swiper.children[current];
-						$(currentBalon).animate({opacity: 0}, 500)
+						$(currentBalon).animate({opacity: 0}, 500);
+						$(currentBalon).removeClass('activeBalon');
 						current++;
 						var nextBalon = swiper.children[current];
-						$(nextBalon).animate({opacity: 1}, 500)
+						$(nextBalon).animate({opacity: 1}, 500);
+						$(nextBalon).addClass('activeBalon');
+
 						$(swiper).animate({left: "-=80vw"}, 500);
 
 					}
@@ -64,9 +69,12 @@ $(function(){
 				if (current >0) {
 					var currentBalon = swiper.children[current];
 					$(currentBalon).animate({opacity: 0}, 500)
+					$(currentBalon).removeClass('activeBalon');
 					current--;
 					var nextBalon = swiper.children[current];
 					$(nextBalon).animate({opacity: 1}, 500)
+					$(nextBalon).addClass('activeBalon');
+
           $(swiper).animate({left: "+=80vw"}, 500)
 				}
     });
