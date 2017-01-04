@@ -7,18 +7,13 @@ var dislikeclass = ".dislike";
 
 
 $(slider).jTinder({
-
     // dislike callback
     onDislike: function (item) {
-        // set the status text
-        $('#status').html('Dislike image ' + (item.index()+1));
-        swiping.swipeCall(1, 1, 1, 1);
+
     },
     // like callback
     onLike: function (item) {
-        // set the status text
-        $('#status').html('Like image ' + (item.index()+1));
-        swiping.swipeCall(1, 1, 1, 1);
+        swiping.addToLiked(item[0].attributes.dataPoliticianId.value);
     },
     animationRevertSpeed: 200,
     animationSpeed: 400,

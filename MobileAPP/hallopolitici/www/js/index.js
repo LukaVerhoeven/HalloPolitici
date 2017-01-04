@@ -33,7 +33,7 @@ const app = {
     // Application Constructor
     initialize: function() {
         this.getButtons();
-        app.getAllPoliticians();
+        this.getAllPoliticians();
         this.bindEvents();
     },
     getButtons: function () {
@@ -54,7 +54,6 @@ const app = {
                 app.faceBookLogin();
             });
         }
-
     },
     checkIfLoggedIn: function () {
         // check if logged in, in global variable
@@ -146,17 +145,16 @@ const app = {
             }
         });
     },
-    getPoliticianQuestions: function () {
+    getPoliticianQuestions: function (politicanID) {
         $.ajax({
             type: "POST",
             url: _APILINK + "/politici/vragen",
             dataType: "json",
             data: {
-                "polID": _POLITICIAN_ID
+                "polID": politicanID
             },
             success: function (success_response) {
                 _POLITICIAN_QUESTIONS = success_response;
-
             },
             error: function (error_response) {
                 console.log(error_response);
