@@ -233,7 +233,10 @@ body {
   .tabset--section .funny #funnyimg .canvaspic {
     width: 80%; }
   .tabset--section .funny #funnyimg #center {
-    width: 200vw; }
+    width: 200vw;
+    margin-top: -1%; }
+    .tabset--section .funny #funnyimg #center .invisible {
+      opacity: 0; }
     .tabset--section .funny #funnyimg #center .canvastextbalon {
       padding-top: 1vw;
       font-size: 5vw;

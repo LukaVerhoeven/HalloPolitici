@@ -178,6 +178,10 @@ $nieuw-gezicht-kleur: #87b2c0;
       #center{
         @extend %absolute;
         width: 200vw;
+        margin-top: -1%;
+        .invisible{
+          opacity: 0;
+        }
         .canvastextbalon{
           @extend %floatleft;
           @extend %archivo;
