@@ -47,7 +47,9 @@ $nieuw-gezicht-kleur: #87b2c0;
 %floatleft{
   float: left;
 }
-
+.class{
+  
+}
 @import "sliding-tab.scss";
 .login{
   @extend %fullwidth;
@@ -168,7 +170,6 @@ $nieuw-gezicht-kleur: #87b2c0;
 
   }
 
-///gitpush
   .funny{
     #funnyimg{
       height: 57%;
