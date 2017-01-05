@@ -32,10 +32,30 @@ under the License.
     <link rel="stylesheet" href="css/jTinder.css">
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <title>Hallo politici!</title>
+    <style media="screen">
+
+        .hidden {
+            pointer-events: none;
+        }
+
+        .vraagtext {
+            position: relative;
+        }
+
+        .vraagtext button {
+            z-index: 1000;
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            border: none;
+            background: none;
+        }
+    </style>
 </head>
 <body>
     <div class="box">
-        <div class="fullvraag hidden">De lange vraag</div>
+        <!-- Position of lange vraag. Dit komt hier: <div class="fullvraag hidden">lange_vraag</div>  -->
+
         <header class="tabset--header">
             <img src="img/textbalon2.png" alt="hallo-textbalon">
         </header>

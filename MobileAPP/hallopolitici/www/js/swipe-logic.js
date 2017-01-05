@@ -10,6 +10,7 @@ var _QUESTION_ID          = null;
 //jQuery vars
 var _TINDER_SLIDE$    = $("#tinderslide ul");
 var _TINDER_SLIDE2$   = $("#tinderslide2 ul");
+var _BOX$             = $(".box");
 var _PICK_POLITICIAN$ = $("#pick_politician");
 
 const swiping = {
@@ -64,8 +65,12 @@ const swiping = {
                         <div>Vraag` + key + `</div>
                         <div class="vraagtext">
                             ` + item[0].vraag.korte_vraag + `
+                            <button onclick="swiping.showExtendedQuestion()">Lees meer</button>
                         </div>
                     </li>`
+                );
+                _BOX$.append(
+                    `<div class="fullvraag hidden" dataQuestionId=`+ item[0].vraag.id +`>` + item[0].vraag.lange_vraag + `</div>`
                 );
             });
             startjTinder2();
@@ -80,6 +85,10 @@ const swiping = {
                 </li>`
             );
         }
+    },
+    showExtendedQuestion: function () {
+        console.log('hello');
+        console.log($(".fullvraag"));
     }
 };
 

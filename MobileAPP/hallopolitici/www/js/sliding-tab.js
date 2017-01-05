@@ -17,24 +17,15 @@ $(".nav--item").click(function(){
 	}else if (val === "tab-3") {
 		navbar.css("background-image","url(img/navbar3.png)");
 		$(".replay").addClass("hide");
-		$(".fullvraag").removeClass("hidden")
-
 		step.text("Step 3");
 	}else {
 		navbar.css("background-image","url(img/navbar4.png)");
 		$(".replay").removeClass("hide");
-		$(".fullvraag").addClass("hidden")
 		step.text("Step 4");
 	}
 
 
 });
-$(".fullvraag").click(function(){
-	$(".fullvraag").toggleClass("block");
-	$(".fullvraag").toggleClass("show");
-});
-
-
 
 //textbalon stap4
 $(function(){
