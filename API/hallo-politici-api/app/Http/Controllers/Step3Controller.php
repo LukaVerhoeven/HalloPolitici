@@ -12,18 +12,21 @@ class Step3Controller extends Controller
 {
     protected function getPoliticusVragen(Request $request){
         $pol_id = $request->polID;
+        $user_id = $request->userID;
 
         $vragen = Vraag_antwoord::where('politicus_id', $pol_id)->has('vraag')->with('vraag')->get();
         $vragen_met_alle_politici = [];
 
         foreach ($vragen as $vraag) {
             $politici_met_vraag = Vraag_antwoord::where('vraag_id', $vraag->vraag_id)->with('politicus')->select('vraag_id', 'politicus_id', 'kort_antwoord')->with('vraag')->get();
-
-            array_push($vragen_met_alle_politici, $politici_met_vraag);
+            $user_vote = Vraag_stem::where('vraag_id', $vraag->vraag_id)->where('fb_id', $user_id)->first();
+            if(empty($user_vote)){
+                array_push($vragen_met_alle_politici, $politici_met_vraag);
+            }
         }
 
         if(empty($vragen_met_alle_politici)){
-            return "Politicus heeft geen vragen";
+            return "Al gestemd voor deze vragen.";
         }
 
         //return hier ook $vragen_met_alle_politici
