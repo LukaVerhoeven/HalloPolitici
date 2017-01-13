@@ -1,0 +1,264 @@
+
+
+
+$login-bg-button-color: #356371;
+$register-color: #356371;
+$step-color: #356371;
+$Choose-politicus-color:#d5e8ed;
+$vraag-background-color:#48889c;
+$nieuw-gezicht-kleur: #87b2c0;
+
+%comfortaa{
+ font-family: 'Open Sans', sans-serif;
+}
+%archivo{
+  font-family: 'Archivo Narrow', sans-serif;
+}
+%norepeat{
+  background-repeat: no-repeat;
+}
+%block{
+  display: block;
+}
+%inlineblock{
+  display: inline-block;
+}
+%absolute{
+  position: absolute;
+}
+%marginauto{
+  margin: auto;
+}
+%fullheight{
+  height: 100%;
+}
+%fullwidth{
+  width: 100%;
+}
+%textright{
+  text-align: right;
+}
+%white{
+  color: white;
+}
+%cover{
+  background-size: cover;
+}
+%floatleft{
+  float: left;
+}
+.class{
+
+}
+@import "sliding-tab.scss";
+.login{
+  @extend %fullwidth;
+  @extend %fullheight;
+  @extend %inlineblock;
+  @extend %cover;
+  background-image: url(../img/bg.jpg);
+  .head{
+    height: 44%;
+    .textbalon{
+      @extend %fullwidth;
+      @extend %fullheight;
+      // height: 44%;
+    }
+
+  }
+  .animation{
+    height: 26%;
+  }
+  .loginbuttons{
+    @extend %fullwidth;
+    height: 30%;
+    display: inline-block;
+    input{
+      @extend %archivo;
+      @extend %norepeat;
+      @extend %block;
+      @extend %marginauto;
+      @extend %textright;
+      @extend %white;
+      width: 77%;
+      height: 33%;
+      background-size: 20% 66%;
+      margin-top: 16%;
+      padding-right: 4%;
+      font-size: 5.6vw;
+      background-color: $login-bg-button-color;
+      border-radius: 15px;
+      background-image: url(../img/fb.png);
+      background-position: center left;
+    }
+    a{
+      @extend %block;
+      @extend %marginauto;
+      @extend %archivo;
+      color: $register-color;
+      width: 42%;
+      font-size: 5vw;
+      margin-top: 3%;
+
+    }
+  }
+}
+.hide{
+  display: none;
+}
+.tabset--section{
+  .swiper{
+    @extend %fullheight;
+    .actions1{
+      a:first-child{
+        background-image: url(../img/dislike1.png);
+        background-color: rgba(219, 170, 199, 0);
+      }
+      a:last-child{
+        background-image: url(../img/like1.png);
+        background-color: rgba(219, 170, 199, 0);
+      }
+    }
+    .actions , .actions1{
+      width: 20%;
+      position: absolute;
+      top:76%;
+      margin-left: 2.5%;
+      z-index: 5;
+        a{
+          width: 22vw;
+          margin: 0px 0vw 0px 11vw;
+          height: 22vw;
+        }
+        .dislike {
+          @extend %cover;
+          background-image: url(../img/dislike.png);
+        }
+        .like{
+          @extend %cover;
+          background-image: url(../img/like.png);
+        }
+
+    }
+  }
+  #tinderslide, #tinderslide2{
+    .nomore{
+      @extend %archivo;
+      @extend %absolute;
+      width: 90%;
+      margin-left: 5%;
+      font-size: 7vw;
+      margin-top: 42%;
+
+    }
+  }
+  #tinderslide2  .vraagtext{
+    @extend %white;
+    @extend %archivo;
+    background-color: $vraag-background-color;
+    background-image: url("../img/Leesmeer.png");
+    background-repeat: no-repeat;
+    background-position: 87% 88%;
+    background-size: 42%;
+    font-weight: 100;
+    letter-spacing: 0.1vw;
+    font-size: 5vw;
+    padding: 6%;
+    margin: 5%;
+    height: 53%;
+    width: 90%;
+
+  }
+
+  .funny{
+    #funnyimg{
+      height: 57%;
+      .canvaspic{
+        width: 80%;
+      }
+      #center{
+        @extend %absolute;
+        width: 200vw;
+        margin-top: -1%;
+        .invisible{
+          opacity: 0;
+        }
+        .canvastextbalon{
+          @extend %floatleft;
+          @extend %archivo;
+          padding-top: 1vw;
+          font-size: 5vw;
+          background-image: url("../img/textbalonStep.png");
+          width: 70vw;
+          background-size: 100% 100%;
+          background-repeat: no-repeat;
+          margin: 0px 5vw;
+          height: 14vh;
+          max-height: 40vh;
+        }
+      }
+    }
+    input{
+      @extend %white;
+      @extend %comfortaa;
+      background-color: rgba(255, 255, 255, 0);
+      background-image: url("../img/share-facebook.png");
+      background-size: 99% 92%;
+      background-repeat: no-repeat;
+      width: 80%;
+      border: 0px;
+      padding: 10%;
+      font-size: 5vw;
+      padding: 0px;
+      height: 12%;
+      &:last-of-type{
+        background-image: url("../img/download.png");
+      }
+    }
+  }
+  .Choose{
+    overflow: scroll;
+  }
+  .Choose, .ChooseVraag, .funny{
+    @extend %fullheight;
+    width: 80%;
+    margin: auto;
+    background-color: $login-bg-button-color;
+  }
+  .Choose .politicus{
+    background-color:$Choose-politicus-color;
+    overflow: hidden;
+    height: 21%;
+    width: 80%;
+    margin-bottom: 8%;
+    margin-left: 10%;
+    img{
+      @extend %floatleft;
+      width: 40%;
+
+    }
+
+    p{
+      @extend %archivo;
+      color: $login-bg-button-color;
+      letter-spacing: 0.1vw;
+      padding-top: 12%;
+      font-size: 5.5vw;
+      font-weight: 100;
+      padding: 0px;
+      &:first-of-type{
+        margin-bottom: 0px;
+      }
+    }
+  }
+}
+.tabset--nav{
+  .step{
+    @extend %archivo;
+    position: absolute;
+    color: $step-color;
+    margin-top: -7%;
+    font-size: 8vw;
+  }
+  // background-image: url(../img/navbar.png)
+}
