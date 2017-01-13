@@ -187,6 +187,7 @@ $nieuw-gezicht-kleur: #87b2c0;
         .canvastextbalon{
           @extend %floatleft;
           @extend %archivo;
+          margin-top: 2vw;
           padding-top: 1vw;
           font-size: 5vw;
           background-image: url("../img/textbalonStep.png");
