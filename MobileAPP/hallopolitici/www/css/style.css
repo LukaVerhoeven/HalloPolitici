@@ -178,7 +178,8 @@ body {
       padding-right: 4%;
       font-size: 5.6vw;
       background-color: #356371;
-      border-radius: 15px;
+      border-radius: 8px;
+      border: none;
       background-image: url(../img/fb.png);
       background-position: center left; }
     .login .loginbuttons a {
