@@ -14,11 +14,12 @@ const steps = {
 };
 
 //step 2
-  $('.nav--item:nth-of-type(3)').on('click',  function(){
+  $('.nav--item:nth-of-type(4)').on('click',  function(){
       if (currentStep == 1 && _LIKED_POLITICIAN_ARR.length > 0) {
         if (currentStep ==1) {
           currentStep++;
           steps.nextStep(String(currentStep));
+          swiping.toggleArrowOnStep(2);
         }
       }
   });
@@ -32,7 +33,7 @@ $('.Choose').on('click', '.politicus', function(){
 });
 
 //step4
-  $('.nav--item:nth-of-type(5)').on('click',  function(){
+  $('.nav--item:nth-of-type(6)').on('click',  function(){
   if (currentStep ==3) {
     currentStep++;
     steps.nextStep(String(currentStep));
