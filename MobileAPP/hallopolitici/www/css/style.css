@@ -231,11 +231,14 @@ body {
   width: 90%; }
 .tabset--section .funny #funnyimg {
   height: 57%; }
-  .tabset--section .funny #funnyimg .canvaspic {
-    width: 80%; }
+  .tabset--section .funny #funnyimg .canvas-overflow {
+    overflow: hidden;
+    height: 96%; }
+    .tabset--section .funny #funnyimg .canvas-overflow .canvaspic {
+      width: 80%; }
   .tabset--section .funny #funnyimg #center {
     width: 200vw;
-    margin-top: -1%; }
+    margin-top: -2vw; }
     .tabset--section .funny #funnyimg #center .invisible {
       opacity: 0; }
     .tabset--section .funny #funnyimg #center .canvastextbalon {

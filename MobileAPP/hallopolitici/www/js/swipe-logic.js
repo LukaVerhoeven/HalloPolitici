@@ -66,9 +66,9 @@ const swiping = {
                 _TINDER_SLIDE2$.append(
                     `<li class="pane" dataQuestionId=`+ item[0].vraag.id +`>
                         <div>Vraag` + key + `</div>
-                        <div class="vraagtext">
+                        <div class="vraagtext ">
                             ` + item[0].vraag.korte_vraag + `
-                            <button onclick="swiping.showExtendedQuestion()">Lees meer</button>
+                            <button  onclick="swiping.showExtendedQuestion()">Lees meer</button>
                         </div>
                     </li>`
                 );

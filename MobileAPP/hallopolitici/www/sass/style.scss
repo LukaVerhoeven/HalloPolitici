@@ -174,13 +174,18 @@ $nieuw-gezicht-kleur: #87b2c0;
   .funny{
     #funnyimg{
       height: 57%;
-      .canvaspic{
-        width: 80%;
+      .canvas-overflow{
+        overflow: hidden;
+        height: 96%;
+        .canvaspic{
+          width: 80%;
+        }
       }
+
       #center{
         @extend %absolute;
         width: 200vw;
-        margin-top: -1%;
+        margin-top: -2vw;
         .invisible{
           opacity: 0;
         }

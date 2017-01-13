@@ -30,6 +30,9 @@ $('.Choose').on('click', '.politicus', function(){
     currentStep++;
     steps.nextStep(String(currentStep));
   }
+  var selectedItem = $(this).index()-1;
+  $('.canvaspic').attr('src','img/politicians/'+ _LIKED_POLITICIAN_ARR[selectedItem][0].afbeelding);
+
 });
 
 //step4
@@ -37,5 +40,8 @@ $('.Choose').on('click', '.politicus', function(){
   if (currentStep ==3) {
     currentStep++;
     steps.nextStep(String(currentStep));
+    swiping.toggleArrowOnStep(4);
+    $(".replay").removeClass("hide");
+
   }
 });
