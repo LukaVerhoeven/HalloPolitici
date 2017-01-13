@@ -41,6 +41,7 @@ $('.Choose').on('click', '.politicus', function(){
     currentStep++;
     steps.nextStep(String(currentStep));
     swiping.toggleArrowOnStep(4);
+    console.log($(".replay").removeClass("hide"));
     $(".replay").removeClass("hide");
 
   }
