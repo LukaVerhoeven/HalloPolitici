@@ -23,7 +23,7 @@ const swiping = {
     addToLiked: function (politicianID) {
         _LIKED_POLITICIAN_ID.push(parseInt(politicianID));
         swiping.addSelectedPoliticianCards();
-        if(_LIKED_POLITICIAN_ARR.length == 3) {
+        if(_LIKED_POLITICIAN_ARR.length == 1) {
             swiping.toggleArrowOnStep(2);
         }
     },
