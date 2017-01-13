@@ -19,13 +19,30 @@ class Step4Controller extends Controller
             $font_size = 20;
         }
 
+
+
         header("Content-type: image/png");
-        $image1 = imagecreatefromjpeg($politicus_img_path);
+        $ext = pathinfo($politicus_img_path, PATHINFO_EXTENSION);
+        switch ($ext) {
+            case 'jpg':
+            $image1 = imagecreatefromjpeg($politicus_img_path);
+            break;
+            case 'png':
+            $image1 = imagecreatefrompng($politicus_img_path);
+            break;
+            case 'gif':
+            $image1 = imagecreatefromgif($politicus_img_path);
+            break;
+            default:
+            return "file format not supported.";
+            break;
+        }
+
         $img1 = imagescale($image1, 300, 299);
         $image2 = imagecreatefrompng('img/tekstballon.png');
         $white = imagecolorallocate($img1, 255, 255, 255);
         imagecopymerge($img1, $image2, 0, 0, 0, 0, 300, 99, 100);
-            // img1, img2, 1_x, 1_y, 2_x, 2_y, balon_width, balon_height, 100
+        // img1, img2, 1_x, 1_y, 2_x, 2_y, balon_width, balon_height, 100
         imagettftext($img1, $font_size, 0, 30, 30, $white, 'img/arial.ttf', $text);
 
         do {
