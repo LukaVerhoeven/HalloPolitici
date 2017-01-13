@@ -23,6 +23,9 @@ const swiping = {
     addToLiked: function (politicianID) {
         _LIKED_POLITICIAN_ID.push(parseInt(politicianID));
         swiping.addSelectedPoliticianCards();
+        if(_LIKED_POLITICIAN_ARR.length == 3) {
+            swiping.toggleArrowOnStep(2);
+        }
     },
     addPoliticianCards: function () {
         for(i=0; i < _ALL_POLITICIANS.length; i++){
@@ -89,6 +92,11 @@ const swiping = {
     showExtendedQuestion: function () {
         console.log('hello');
         console.log($(".fullvraag"));
+    },
+    toggleArrowOnStep: function (step) {
+        /*1e:-40vw     2e:-16vw    3e:11vw    4e:36vw*/
+        var marginValues = [-40, -16, 11, 36];
+        $(".arrow").toggle().css("margin-left", marginValues[step-1] + "vw");
     }
 };
 
