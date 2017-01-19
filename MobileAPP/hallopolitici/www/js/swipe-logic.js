@@ -8,13 +8,15 @@ var _ALL_POLITICIANS      = JSON.parse(localStorage.getItem(4));
 var _QUESTION_ID          = null;
 
 //jQuery vars
-var _TINDER_SLIDE$    = $("#tinderslide ul");
-var _TINDER_SLIDE2$   = $("#tinderslide2 ul");
-var _BOX$             = $(".box");
-var _PICK_POLITICIAN$ = $("#pick_politician");
+var _TINDER_SLIDE$     = $("#tinderslide ul");
+var _TINDER_SLIDE2$    = $("#tinderslide2 ul");
+var _BOX$              = $(".box");
+var _PICK_POLITICIAN$  = $("#pick_politician");
+var _BUTTON_FULLVRAAG$ = $("div.vraagtext #js-button-fullvraag");
 
 const swiping = {
     initialize: function () {
+        swiping.bindEvents();
         swiping.addPoliticianCards();
     },
     bindEvents: function () {
@@ -66,14 +68,14 @@ const swiping = {
                 _TINDER_SLIDE2$.append(
                     `<li class="pane" dataQuestionId=`+ item[0].vraag.id +`>
                         <div>Vraag` + key + `</div>
-                        <div class="vraagtext ">
+                        <div class="vraagtext">
                             ` + item[0].vraag.korte_vraag + `
-                            <button  onclick="swiping.showExtendedQuestion()">Lees meer</button>
+                            <button id="js-button-fullvraag" onclick="swiping.showExtendedQuestion(` + item[0].vraag.id +`)">Lees meer</button>
                         </div>
                     </li>`
                 );
                 _BOX$.append(
-                    `<div class="fullvraag hidden" dataQuestionId=`+ item[0].vraag.id +`>` + item[0].vraag.lange_vraag + `</div>`
+                    `<div class="fullvraag hidden" dataQuestionId=` + item[0].vraag.id + `><span id="close-btn" onclick="swiping.showExtendedQuestion(` + item[0].vraag.id +`)">X</span><p>` + item[0].vraag.lange_vraag + `</p></div>`
                 );
             });
             startjTinder2();
@@ -89,9 +91,8 @@ const swiping = {
             );
         }
     },
-    showExtendedQuestion: function () {
-        console.log('hello');
-        console.log($(".fullvraag"));
+    showExtendedQuestion: function (questionID) {
+        $(".fullvraag[dataQuestionId="+ questionID +"]").toggleClass('hidden');
     },
     toggleArrowOnStep: function (step) {
         /*1e:-40vw     2e:-16vw    3e:11vw    4e:36vw*/
