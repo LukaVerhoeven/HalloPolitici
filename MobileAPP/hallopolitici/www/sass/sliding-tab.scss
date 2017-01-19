@@ -13,34 +13,34 @@ body {
 	// align-content: center;
 }
 .swiper{
-  .wrap{
-    margin-left: 4%;
-    padding-top: 3%;
-  }
+	.wrap{
+		margin-left: 4%;
+		padding-top: 3%;
+	}
 }
 .box {
-  @extend %fullheight;
-  @extend %fullwidth;
-  @extend %cover;
+	@extend %fullheight;
+	@extend %fullwidth;
+	@extend %cover;
 	overflow: hidden;
-  background-image: url(../img/bg.jpg);
+	background-image: url(../img/bg.jpg);
 
 	display: flex;
 	flex-flow: column wrap;
 
 	box-shadow: 0px 0px 14px 4px rgba(#000,0.1);
 	.fullvraag{
-	  background-color: rgba(255, 255, 255, 0);
-		color:  rgba(255, 255, 255, 0);
-	  position: absolute;
-		width: 39vw;
-    height: 9vh;
-    padding: 7%;
-    margin: 97% 45%;
-		margin-bottom: 10%;
+		background-color: $vraag-background-color;
+		color: #ffffff;
+		position: absolute;
+		// width: 39vw;
+		// height: 9vh;
+		// padding: 7%;
+		// margin: 97% 45%;
+		// margin-bottom: 10%;
 		z-index: 20;
 		-webkit-transition: width 1s, height 1s, padding 1s,margin 1s; /* For Safari 3.1 to 6.0 */
-		transition:  width 1s, height 1s, padding 1s,margin 1s;
+		transition: width 1s, height 1s, padding 1s, margin 1s;
 	}
 	.block{
 		background: $vraag-background-color;
@@ -52,37 +52,40 @@ body {
 		padding: 10%;
 		margin: 0%;
 	}
+	.hidden {
+		visibility: hidden;
+	}
 }
 .tabset--header{
-  height:20%;
-      img{
-        margin: auto;
-        display: block;
-        height: 80%;
-      }
-			.replay{
-				background-image: url("../img/replay.png");
-				height: 23%;
-				width: 27%;
-				display: block;
-				background-size: 85% 85%;
-				background-repeat: no-repeat;
-				background-position: 5px 4px;
-				z-index: 50;
-				margin-top: 0%;
-				margin-left: 55%;
-			}
-  }
+	height:20%;
+	img{
+		margin: auto;
+		display: block;
+		height: 80%;
+	}
+	.replay{
+		background-image: url("../img/replay.png");
+		height: 23%;
+		width: 27%;
+		display: block;
+		background-size: 85% 85%;
+		background-repeat: no-repeat;
+		background-position: 5px 4px;
+		z-index: 50;
+		margin-top: 0%;
+		margin-left: 55%;
+	}
+}
 
 .tabset--nav {
-  @extend %cover;
-  @extend %norepeat;
-  height: 20%;
-  background-image: url(../img/navbar1.png);
+	@extend %cover;
+	@extend %norepeat;
+	height: 20%;
+	background-image: url(../img/navbar1.png);
 	position: relative;
 	display: flex;
-  background-position: 0% 83%;
-  background-size: 100% 57%;
+	background-position: 0% 83%;
+	background-size: 100% 57%;
 	justify-content: space-around;
 	align-items: center;
 
@@ -129,7 +132,7 @@ body {
 .tabset--content {
 	position: relative;
 	width: 400%;
-  height: 60%;
+	height: 60%;
 
 	flex-grow: 1;
 
@@ -171,4 +174,8 @@ body {
 	&:nth-of-type(3) {
 		// background-color: tomato;
 	}
+}
+
+.title-vraag {
+	color: white;
 }

@@ -67,7 +67,7 @@ const swiping = {
                 key = _POLITICIAN_QUESTIONS.length - key;
                 _TINDER_SLIDE2$.append(
                     `<li class="pane" dataQuestionId=`+ item[0].vraag.id +`>
-                        <div>Vraag` + key + `</div>
+                        <div class="title-vraag">Vraag` + key + `</div>
                         <div class="vraagtext">
                             ` + item[0].vraag.korte_vraag + `
                             <button id="js-button-fullvraag" onclick="swiping.showExtendedQuestion(` + item[0].vraag.id +`)">Lees meer</button>
@@ -92,7 +92,7 @@ const swiping = {
         }
     },
     showExtendedQuestion: function (questionID) {
-        $(".fullvraag[dataQuestionId="+ questionID +"]").toggleClass('hidden');
+        $(".fullvraag[dataQuestionId="+ questionID +"]").toggleClass('hidden show');
     },
     toggleArrowOnStep: function (step) {
         /*1e:-40vw     2e:-16vw    3e:11vw    4e:36vw*/
