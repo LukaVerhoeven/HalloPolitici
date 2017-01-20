@@ -21,7 +21,7 @@ const funny = {
                         href: _HOSTING + "/image/" +success_response,
                         caption: "Hallo Politici",
                         description: "Afbeelding gegenereerd met de officiële app van Hallo Politici",
-                        picture: '_HOSTING + "/image/" +success_response'
+                        picture: _HOSTING + "/image/" +success_response
                     });
                 },
                 error: function (error_response) {
@@ -35,7 +35,7 @@ const funny = {
                 href: _HOSTING + "/image/" +_UNIQUE_IMG_NAME,
                 caption: "Hallo Politici",
                 description: "Afbeelding gegenereerd met de officiële app van Hallo Politici",
-                picture: _HOSTING + "/image/" +success_response
+                picture: _HOSTING + "/image/" +_UNIQUE_IMG_NAME
             });
         }
     },
