@@ -1,3 +1,6 @@
+body {
+    overflow: hidden;
+}
 .title-vraag {
     color: white;
 }
