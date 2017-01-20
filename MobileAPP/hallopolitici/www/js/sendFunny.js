@@ -16,7 +16,13 @@ const funny = {
                 success: function (success_response) {
                     _UNIQUE_IMG_NAME = success_response;
                     console.log(_HOSTING + "/image/" +success_response);
-                    //shareeeeeeeeeeeeeee
+                    facebookConnectPlugin.showDialog({
+                        method: "share",
+                        href: _HOSTING + "/image/" +success_response,
+                        caption: "Hallo Politici",
+                        description: "Afbeelding gegenereerd met de officiële app van Hallo Politici",
+                        picture: '_HOSTING + "/image/" +success_response'
+                    });
                 },
                 error: function (error_response) {
                     console.log(error_response);
@@ -24,7 +30,13 @@ const funny = {
             });
         }
         else {
-            //shareeeee
+            facebookConnectPlugin.showDialog({
+                method: "share",
+                href: _HOSTING + "/image/" +_UNIQUE_IMG_NAME,
+                caption: "Hallo Politici",
+                description: "Afbeelding gegenereerd met de officiële app van Hallo Politici",
+                picture: _HOSTING + "/image/" +success_response
+            });
         }
     },
     downloadFunny: function(text,imgURL) {
@@ -63,17 +75,17 @@ const funny = {
 
 
 $('#FacebookPost').click(function () {
-        counter++;
-        var imgURL = $('.canvaspic').attr('src');
-        var text = $('.activeBalon').text();
-        funny.shareFunnyOnFacebook(text,imgURL);
+    counter++;
+    var imgURL = $('.canvaspic').attr('src');
+    var text = $('.activeBalon').text();
+    funny.shareFunnyOnFacebook(text,imgURL);
 
 });
 
 $('#download').click(function () {
-        counter++;
-        var imgURL = $('.canvaspic').attr('src');
-        var text = $('.activeBalon').text();
-        funny.downloadFunny(text,imgURL);
+    counter++;
+    var imgURL = $('.canvaspic').attr('src');
+    var text = $('.activeBalon').text();
+    funny.downloadFunny(text,imgURL);
 
 });
