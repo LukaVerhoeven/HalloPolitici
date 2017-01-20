@@ -77,10 +77,6 @@
     <platform name="android">
         <allow-intent href="market:*" />
     </platform>
-    <platform name="ios">
-        <allow-intent href="itms:*" />
-        <allow-intent href="itms-apps:*" />
-    </platform>
     <plugin name="cordova-plugin-facebook4" spec="~1.7.4">
         <variable name="APP_ID" value="776739179131851" />
         <variable name="APP_NAME" value="Hallo Politici" />
