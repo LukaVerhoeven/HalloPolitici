@@ -64,11 +64,16 @@ body {
       position: absolute;
       z-index: 20;
       -webkit-transition: width 1s, height 1s, padding 1s,margin 1s;
-      transition: width 1s, height 1s, visibility 1s;
+      transition: width 0.5s, height 0.5s, visibility 0.5s;
     }
   .box .fullvraag.hidden {
+      visibility: hidden;
+      display: block !important;
       width: 0vw;
       height: 0vh;
+  }
+  .hide-text {
+      visibility: hidden;
   }
   .box .block {
     background: #48889c;

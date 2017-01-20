@@ -35,7 +35,9 @@ const swiping = {
                 `<li class="pane" dataPoliticianId="` + _ALL_POLITICIANS[i].id + `">
                     <h3>` + _ALL_POLITICIANS[i].voornaam + ` ` + _ALL_POLITICIANS[i].familienaam + `</h3>
                     <p class="partij">` + _ALL_POLITICIANS[i].partijnaam.naam + `</p>
-                    <img src="/img/politicians/` + _ALL_POLITICIANS[i].afbeelding + `">
+                    <span style="margin:auto; display: block; width:135px; height: 180px; position: relative; overflow:hidden;">
+                        <img style="width:100%; position: absolute; top: 50%; left: 50%; transform:translate(-50%, -50%); max-width:100%; margin: 0;" src="/img/politicians/` + _ALL_POLITICIANS[i].afbeelding + `">
+                    </span>
                     <div class="like"></div>
                     <div class="dislike"></div>
                 </li>`
@@ -54,10 +56,14 @@ const swiping = {
         var lengthArr = _LIKED_POLITICIAN_ARR.length;
 
         _PICK_POLITICIAN$.append(
-            `<div class="politicus" onclick="app.getPoliticianQuestions(` + _LIKED_POLITICIAN_ARR[lengthArr-1][0].id + `)">
-                <img src="img/politicians/` + _LIKED_POLITICIAN_ARR[lengthArr-1][0].afbeelding + `">
-                <p>` + _LIKED_POLITICIAN_ARR[lengthArr-1][0].voornaam + ` ` + _LIKED_POLITICIAN_ARR[lengthArr-1][0].familienaam + `</p>
-                <p class="partij">` + _LIKED_POLITICIAN_ARR[lengthArr-1][0].partijnaam.naam + `</p>
+            `<div style="display:flex; justify-content:space-between; align-items:center;" class="politicus" onclick="app.getPoliticianQuestions(` + _LIKED_POLITICIAN_ARR[lengthArr-1][0].id + `)">
+                <span style="overflow:hidden; width:34.78260869565217%; height: 80px; position: relative; display: inline-block;">
+                    <img style="width:100%; position: absolute; top:50%; left: 50%; transform:translate(-50%, -50%);" src="img/politicians/` + _LIKED_POLITICIAN_ARR[lengthArr-1][0].afbeelding + `">
+                </span>
+                <span style="text-align: center; width:65.21739130434783%;">
+                    <p style="width: 100%; padding: 5px; margin: 0px;">` + _LIKED_POLITICIAN_ARR[lengthArr-1][0].voornaam + ` ` + _LIKED_POLITICIAN_ARR[lengthArr-1][0].familienaam + `</p>
+                    <p style="width: 100%; padding: 5px;" class="partij">` + _LIKED_POLITICIAN_ARR[lengthArr-1][0].partijnaam.naam + `</p>
+                </span>
             </div>`
         );
     },
@@ -75,7 +81,7 @@ const swiping = {
                     </li>`
                 );
                 _BOX$.append(
-                    `<div class="fullvraag hidden" dataQuestionId=` + item[0].vraag.id + `><span id="close-btn" onclick="swiping.showExtendedQuestion(` + item[0].vraag.id +`)">X</span><p>` + item[0].vraag.lange_vraag + `</p></div>`
+                    `<div class="fullvraag hidden" dataQuestionId=` + item[0].vraag.id + `><span id="close-btn" onclick="swiping.showExtendedQuestion(` + item[0].vraag.id +`)">X</span><p class="long-question hide-text">` + item[0].vraag.lange_vraag + `</p></div>`
                 );
             });
             startjTinder2();
@@ -93,6 +99,17 @@ const swiping = {
     },
     showExtendedQuestion: function (questionID) {
         $(".fullvraag[dataQuestionId="+ questionID +"]").toggleClass('hidden show');
+        if ( $(".fullvraag[dataQuestionId="+ questionID +"]").hasClass('show')) {
+            console.log('if test');
+            setTimeout(function () {
+                console.log('if test timeout');
+                $(".fullvraag[dataQuestionId="+ questionID +"] .long-question").toggleClass('hide-text');
+            }, 500);
+        }
+        else {
+            console.log('else test');
+            $(".fullvraag[dataQuestionId="+ questionID +"] .long-question").toggleClass('hide-text');
+        }
     },
     toggleArrowOnStep: function (step) {
         /*1e:-40vw     2e:-16vw    3e:11vw    4e:36vw*/
