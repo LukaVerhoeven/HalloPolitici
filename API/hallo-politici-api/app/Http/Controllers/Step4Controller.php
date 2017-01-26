@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Afbeelding_tekstjes;
 
 class Step4Controller extends Controller
 {
@@ -64,5 +65,11 @@ class Step4Controller extends Controller
         else {
             return "image not found.";
         }
+    }
+
+    public function getText(){
+        $text = Afbeelding_tekstjes::all();
+
+        return response()->json($text);
     }
 }

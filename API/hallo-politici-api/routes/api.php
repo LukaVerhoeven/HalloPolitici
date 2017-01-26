@@ -32,4 +32,6 @@ Route::post('politici/vragen', 'Step3Controller@getPoliticusVragen');
 Route::post('politici/vragen/vote', 'Step3Controller@stemVoorVraag');
 
 //Stap 4 generator
-Route::post('generate-img', 'Step4Controller@generateImage'); //inloggen
+Route::post('generate-img', 'Step4Controller@generateImage');
+
+Route::post('text-ballon', 'Step4Controller@getText');
