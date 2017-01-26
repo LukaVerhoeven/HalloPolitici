@@ -1,5 +1,5 @@
 //textbalon stap4
-$(function(){
+function hammerInitialize(){
 	var swiper = document.getElementById("center");
 	var items = $("#center").children().length;
 	var current = 0;
@@ -36,4 +36,4 @@ $(function(){
 			$(swiper).animate({left: "+=80vw"}, 500)
 		}
 	});
-})
+}

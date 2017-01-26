@@ -32,95 +32,94 @@ var _FIRST_QUESTION_LIKED = false;
 
 // Application module
 const app = {
-        // Application Constructor
-        initialize: function() {
-            this.getButtons();
-            this.getAllPoliticians();
+    // Application Constructor
+    initialize: function() {
+        this.getButtons();
+        this.getAllPoliticians();
 
-            if (localStorage.getItem(2) === "1") {
-                app.getTextBalloon(1);
-            }
-            else {
-                app.getTextBalloon(0);
-            }
+        if (localStorage.getItem(2) === "1") {
+            app.getTextBalloon(1);
+        }
+        else {
+            app.getTextBalloon(0);
+        }
 
-            this.bindEvents();
-        },
-        getButtons: function () {
-            // Get login button
-            try {
-                _LOGINBTN = document.querySelector("#loginFB");
-                _NOLOGINBTN = document.querySelector('#noLogin');
-            }
-            catch (error){
-                console.log(error);
-            }
-        },
-        bindEvents: function () {
-            // Bind device ready event to app
-            document.addEventListener('deviceready', this.onDeviceReady, false);
-            // Bind click event to login button
-            if(_LOGINBTN !== null) {
-                _LOGINBTN.addEventListener('click', function () {
-                    app.faceBookLogin();
-                });
-            }
+        this.bindEvents();
+    },
+    getButtons: function () {
+        // Get login button
+        try {
+            _LOGINBTN = document.querySelector("#loginFB");
+            _NOLOGINBTN = document.querySelector('#noLogin');
+        }
+        catch (error){
+            console.log(error);
+        }
+    },
+    bindEvents: function () {
+        // Bind device ready event to app
+        document.addEventListener('deviceready', this.onDeviceReady, false);
+        // Bind click event to login button
+        if(_LOGINBTN !== null) {
+            _LOGINBTN.addEventListener('click', function () {
+                app.faceBookLogin();
+            });
+        }
 
-            if(_NOLOGINBTN !== null) {
-                _NOLOGINBTN.addEventListener('click', function () {
-                    localStorage.removeItem(0);
-                    localStorage.removeItem(1);
-                    localStorage.setItem(2, "0");
-                });
+        if(_NOLOGINBTN !== null) {
+            _NOLOGINBTN.addEventListener('click', function () {
+                localStorage.removeItem(0);
+                localStorage.removeItem(1);
+                localStorage.setItem(2, "0");
+            });
+        }
+    },
+    checkIfLoggedIn: function () {
+        // check if logged in, in global variable
+        if (localStorage.getItem(2) === "1" && (window.location.pathname === "index.html" || window.location.pathname === "/")) {
+            window.location = "steps.html";
+        }
+    },
+    faceBookLogin: function() {
+        // Facebook API call for login
+        facebookConnectPlugin.login(["public_profile"],
+            app.fbLoginSuccess,
+            function (error_response) {
+                alert("" + error_response)
             }
-        },
-        checkIfLoggedIn: function () {
-            // check if logged in, in global variable
-            if (localStorage.getItem(2) === "1" && (window.location.pathname === "index.html" || window.location.pathname === "/")) {
-                window.location = "steps.html";
-            }
-        },
-        fbLoginSuccess: function (userData) {
-            // Debug the userID if it exists and get user name
-            if(userData.authResponse) {
-                // Get user id from the JSON response
-                _USERID = userData.authResponse.userID;
-                _ISLOGGEDIN = 1;
-                // Get user name from facebook id
-                facebookConnectPlugin.api('/me', ['name'], app.getFbUserName);
-                this.getTextBalloon(_ISLOGGEDIN);
-            }
-            else{
-                alert('error happend while logging in');
-            }
+        );
+    },
+    fbLoginSuccess: function (userData) {
+        // Debug the userID if it exists and get user name
+        if(userData.authResponse) {
+            // Get user id from the JSON response
+            _USERID = userData.authResponse.userID;
+            _ISLOGGEDIN = 1;
+            // Get user name from facebook id
+            facebookConnectPlugin.api('/me', ["public_profile"], app.getFbUserName);
+            this.getTextBalloon(_ISLOGGEDIN);
+        }
+        else{
+            alert('error happend while logging in');
+        }
 
-            // Set user id in local storage
-            //var userID = window.localStorage.key(0);
-            window.localStorage.setItem(0, _USERID);
-            //var isLoggedIn = window.localStorage.key(2);
-            window.localStorage.setItem(2, _ISLOGGEDIN);
-        },
-        getFbUserName: function (response) {
-            _USERNAME = response.name; // Put username in global _USERNAME
+        // Set user id in local storage
+        //var userID = window.localStorage.key(0);
+        window.localStorage.setItem(0, _USERID);
+        //var isLoggedIn = window.localStorage.key(2);
+        window.localStorage.setItem(2, _ISLOGGEDIN);
+    },
+    getFbUserName: function (response) {
+        _USERNAME = response.name; // Put username in global _USERNAME
 
-            // Check if userid is set local and send user id to back-end
-            if((_USERID !== null && _USERNAME !== null) || (_USERID !== undefined && _USERNAME !== undefined)) {
-                alert('send Fb id name')
-                app.sendFbIdAndName(); // Ajax call to back-end with userID and username that are stored in global _USERID _USERNAME
-            }
+        // Check if userid is set local and send user id to back-end
+        if((_USERID !== null && _USERNAME !== null) || (_USERID !== undefined && _USERNAME !== undefined)) {
+            app.sendFbIdAndName(); // Ajax call to back-end with userID and username that are stored in global _USERID _USERNAME
+        }
 
-            var username = window.localStorage.key(1);
-            window.localStorage.setItem(1, _USERNAME);
+        var username = window.localStorage.key(1);
+        window.localStorage.setItem(1, _USERNAME);
 
-        },
-        faceBookLogin: function() {
-            // Facebook API call for login
-            facebookConnectPlugin.login(["public_profile", "name", "first_name", "last_name"],
-                app.fbLoginSuccess,
-                function (error_response) {
-                    alert("" + error_response)
-                }
-            );
     },
     sendFbIdAndName: function () {
         $.ajax({
@@ -133,17 +132,14 @@ const app = {
             },
             success: function (success_response) {
                 console.log(success_response);
-                alert('send fb id name function success response');
                 app.successLogin();
             },
             error: function (error_response) {
-                alert('send fb id name function err response');
                 console.log(error_response);
             }
         });
     },
     successLogin: function () {
-        alert('success Login going to steps now');
         window.location = "steps.html";
     },
     onDeviceReady: function() {

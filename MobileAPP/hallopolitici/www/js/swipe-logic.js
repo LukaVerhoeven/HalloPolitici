@@ -15,11 +15,13 @@ var _TINDER_SLIDE2$    = $("#tinderslide2 ul");
 var _BOX$              = $(".box");
 var _PICK_POLITICIAN$  = $("#pick_politician");
 var _BUTTON_FULLVRAAG$ = $("div.vraagtext #js-button-fullvraag");
+var _FUNNY_CENTER$     = $("#center");
 
 const swiping = {
     initialize: function () {
         swiping.bindEvents();
         swiping.addPoliticianCards();
+        console.log($("#center"), _FUNNY_CENTER$);
     },
     bindEvents: function () {
 
@@ -118,8 +120,16 @@ const swiping = {
         var marginValues = [-40, -16, 11, 36];
         $(".arrow").toggle().css("margin-left", marginValues[step-1] + "vw");
     },
+    addTextBalloon: function (allText) {
+        console.log('add text balloon', allText);
+        allText.forEach(function (text) {
+            console.log(text);
+            _FUNNY_CENTER$.append("<div class='canvastextbalon'>" + text.tekst + "</div>");
+        });
+        hammerInitialize();
+    },
     replacePlaceholderName: function (text, username) {
-        text.replace(/__USERNAME__/i, username);
+        return text.replace(/__USERNAME__/i, username);
     }
 };
 

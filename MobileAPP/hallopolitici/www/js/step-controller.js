@@ -52,6 +52,7 @@ $('.nav--item:nth-of-type(6)').on('click',  function(){
         swiping.toggleArrowOnStep(4);
         console.log($(".replay").removeClass("hide"));
         $(".replay").removeClass("hide");
+        swiping.addTextBalloon(_ALL_TEXT);
         swal({
             title: "Bedankt!",
             text: "Bedankt voor het gebruiken van onze applicatie. Wenst u meer info, of de antwoorden die de politici gaven op deze vragen? Neem dan zeker eens een kijkje op <span style='color:#F8BB86'>hallopolitici.be<span>",

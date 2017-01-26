@@ -270,11 +270,10 @@ body {
   width: 80%;
   border: 0px;
   padding: 10%;
-  font-size: 5vw;
+  font-size: 4vw;
   padding: 0px;
-  height: 12%; }
-  .tabset--section .funny input:last-of-type {
-    background-image: url("../img/download.png"); }
+  height: 12%;
+  margin-top: 40px;}
 .tabset--section .Choose {
   overflow: scroll; }
 .tabset--section .Choose, .tabset--section .ChooseVraag, .tabset--section .funny {
