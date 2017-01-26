@@ -58,7 +58,7 @@ const swiping = {
         _PICK_POLITICIAN$.append(
             `<div style="display:flex; justify-content:space-between; align-items:center;" class="politicus" onclick="app.getPoliticianQuestions(` + _LIKED_POLITICIAN_ARR[lengthArr-1][0].id + `)">
                 <span style="overflow:hidden; width:34.78260869565217%; height: 80px; position: relative; display: inline-block;">
-                    <img style="width:100%; position: absolute; top:50%; left: 50%; transform:translate(-50%, -50%);" src="img/politicians/` + _LIKED_POLITICIAN_ARR[lengthArr-1][0].afbeelding + `">
+                    <img style="width:100%; position: absolute; top:50%; left: 50%; transform:translate(-50%, -50%);" src="/img/politicians/` + _LIKED_POLITICIAN_ARR[lengthArr-1][0].afbeelding + `">
                 </span>
                 <span style="text-align: center; width:65.21739130434783%;">
                     <p style="width: 100%; padding: 5px; margin: 0px;">` + _LIKED_POLITICIAN_ARR[lengthArr-1][0].voornaam + ` ` + _LIKED_POLITICIAN_ARR[lengthArr-1][0].familienaam + `</p>
@@ -115,6 +115,9 @@ const swiping = {
         /*1e:-40vw     2e:-16vw    3e:11vw    4e:36vw*/
         var marginValues = [-40, -16, 11, 36];
         $(".arrow").toggle().css("margin-left", marginValues[step-1] + "vw");
+    },
+    replacePlaceholderName: function (text, username) {
+        text.replace(/__USERNAME__/i, username);
     }
 };
 

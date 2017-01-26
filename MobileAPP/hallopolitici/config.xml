@@ -4,8 +4,8 @@
     <description>
         Hallo Politici applicatie.
     </description>
-    <author email="support@phonegap.com" href="http://phonegap.com">
-        PhoneGap Team
+    <author>
+        Dries Heyninck, Joren Van Hemelrijk, Luka Verhoeven
     </author>
     <content src="index.html" />
     <preference name="permissions" value="none" />
