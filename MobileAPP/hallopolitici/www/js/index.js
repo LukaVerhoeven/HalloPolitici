@@ -87,16 +87,11 @@ const app = {
                 _USERID = userData.authResponse.userID;
                 _ISLOGGEDIN = 1;
                 // Get user name from facebook id
-                facebookConnectPlugin.api('/me', null, app.getFbUserName);
+                facebookConnectPlugin.api('/me', ['name'], app.getFbUserName);
                 this.getTextBalloon(_ISLOGGEDIN);
             }
             else{
-                alert('error happend while logging in')
-            }
-
-            // Check if userid is set local and send user id to back-end
-            if((_USERID !== null && _USERNAME !== null) || (_USERID !== undefined && _USERNAME !== undefined)) {
-                app.sendFbIdAndName(); // Ajax call to back-end with userID and username that are stored in global _USERID _USERNAME
+                alert('error happend while logging in');
             }
 
             // Set user id in local storage
@@ -108,18 +103,24 @@ const app = {
         getFbUserName: function (response) {
             _USERNAME = response.name; // Put username in global _USERNAME
 
+            // Check if userid is set local and send user id to back-end
+            if((_USERID !== null && _USERNAME !== null) || (_USERID !== undefined && _USERNAME !== undefined)) {
+                alert('send Fb id name')
+                app.sendFbIdAndName(); // Ajax call to back-end with userID and username that are stored in global _USERID _USERNAME
+            }
+
             var username = window.localStorage.key(1);
             window.localStorage.setItem(1, _USERNAME);
 
         },
         faceBookLogin: function() {
             // Facebook API call for login
-            facebookConnectPlugin.login(["public_profile"],
-            app.fbLoginSuccess,
-            function (error_response) {
-                alert("" + error_response)
-            }
-        );
+            facebookConnectPlugin.login(["public_profile", "name", "first_name", "last_name"],
+                app.fbLoginSuccess,
+                function (error_response) {
+                    alert("" + error_response)
+                }
+            );
     },
     sendFbIdAndName: function () {
         $.ajax({
@@ -132,14 +133,17 @@ const app = {
             },
             success: function (success_response) {
                 console.log(success_response);
+                alert('send fb id name function success response');
                 app.successLogin();
             },
             error: function (error_response) {
+                alert('send fb id name function err response');
                 console.log(error_response);
             }
         });
     },
     successLogin: function () {
+        alert('success Login going to steps now');
         window.location = "steps.html";
     },
     onDeviceReady: function() {
@@ -220,7 +224,7 @@ const app = {
                 'isLoggedIn': isLoggedIn
             },
             success: function (success_response) {
-                console.log("success", success_response);
+                localStorage.setItem('text-balloon', JSON.stringify(success_response));
             },
             error: function (error_response) {
                 console.log("error", error_response);
